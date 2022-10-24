@@ -25,6 +25,9 @@ function love.load()
    -- gSounds['music']:play()
 
     love.keyboard.keysPressed = {}
+
+
+    
 end
 
 function love.resize(w, h)

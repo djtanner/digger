@@ -17,33 +17,23 @@ Code reused from:
     quads for the different tiles therein, divided into tables for each set
     of tiles, since each color has 6 varieties.
 ]]
-function GenerateTileQuads(atlas)
-    local tiles = {}
+function GenerateQuads(atlas, tilewidth, tileheight)
+    local sheetWidth = atlas:getWidth() / tilewidth
+    local sheetHeight = atlas:getHeight() / tileheight
 
-    local x = 0
-    local y = 0
+    local sheetCounter = 1
+    local spritesheet = {}
 
-    local counter = 1
-
-    -- 2 rows of tiles
-    for row = 1, 2 do
-        
-            tiles[counter] = {}
-            
-            for col = 1, 2 do
-                table.insert(tiles[counter], love.graphics.newQuad(
-                    x, y, 16, 16, atlas:getDimensions()
-                ))
-                x = x + 16
-            end
-
-            counter = counter + 1
-       
-        y = y + 16
-        x = 0
+    for y = 0, sheetHeight - 1 do
+        for x = 0, sheetWidth - 1 do
+            spritesheet[sheetCounter] =
+                love.graphics.newQuad(x * tilewidth, y * tileheight, tilewidth,
+                tileheight, atlas:getDimensions())
+            sheetCounter = sheetCounter + 1
+        end
     end
 
-    return tiles
+    return spritesheet
 end
 
 --[[

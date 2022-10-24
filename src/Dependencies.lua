@@ -22,5 +22,5 @@ gTextures = {
 
 
 gFrames = {
-    ['tiles'] = {1,2,3,4}
+    ['tiles'] = GenerateQuads(gTextures['grass'], TILE_SIZE, TILE_SIZE)
 }

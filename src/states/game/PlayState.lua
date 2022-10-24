@@ -5,6 +5,7 @@ function PlayState:init()
    self.y = 1
 
 
+
     self.tiles = {}
 
     for tileY = 1, 40 do
