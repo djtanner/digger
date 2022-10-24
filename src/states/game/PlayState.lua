@@ -1,18 +1,18 @@
 PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
-    self.x = 8
-    self.y = 8
+   self.x = 1
+   self.y = 1
 
 
     self.tiles = {}
 
-    for tileY = 1, 8 do
+    for tileY = 1, 40 do
         
         -- empty table that will serve as a new row
         table.insert(self.tiles, {})
 
-        for tileX = 1, 8 do
+        for tileX = 1, 40 do
            
                 table.insert(self.tiles[tileY], Tile(tileX, tileY, 2))
                 

@@ -28,8 +28,6 @@ function GenerateTileQuads(atlas)
     -- 2 rows of tiles
     for row = 1, 2 do
         
-        
-        
             tiles[counter] = {}
             
             for col = 1, 2 do

@@ -7,8 +7,8 @@ function Tile:init(x, y, color)
     self.gridY = y
 
     -- coordinate positions
-    self.x = (self.gridX - 1) * 32
-    self.y = (self.gridY - 1) * 32
+    self.x = (self.gridX - 1) * 16
+    self.y = (self.gridY - 1) * 16
 
     -- tile appearance/points
     self.color = color
