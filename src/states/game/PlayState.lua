@@ -8,14 +8,14 @@ function PlayState:init()
 
     self.tiles = {}
 
-    for tileY = 1, 40 do
+    for tileY = 1, 24 do
         
         -- empty table that will serve as a new row
         table.insert(self.tiles, {})
 
-        for tileX = 1, 40 do
+        for tileX = 1, 24 do
            
-                table.insert(self.tiles[tileY], Tile(tileX, tileY, 2))
+                table.insert(self.tiles[tileY], Tile(tileX, tileY, math.random(2)))
                 
          
             
@@ -41,7 +41,7 @@ function PlayState:render()
     for y = 1, #self.tiles do
 
         for x = 1, #self.tiles[1] do
-            self.tiles[y][x]:render(self.x, self.y, 2)
+            self.tiles[y][x]:render(self.x, self.y, self.color)
         end
 
     end
