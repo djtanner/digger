@@ -2,10 +2,6 @@ LevelMaker = Class{}
 
 function LevelMaker.generate()
 
-   local x = 1
-   local y = 1
- 
- 
  
      local tiles = {}
  

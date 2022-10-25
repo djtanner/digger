@@ -2,34 +2,16 @@ PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
     self.map = LevelMaker.generate()
-
---[[    self.x = 1
-   self.y = 1
-
-
-
-    self.tiles = {}
-
-    for tileY = 1, 24 do
-        
-        -- empty table that will serve as a new row
-        table.insert(self.tiles, {})
-
-        for tileX = 1, 24 do
-           
-                table.insert(self.tiles[tileY], Tile(tileX, tileY, math.random(2)))
-                
-         
-            
-        end
-    end ]]
-
     
 end
 
 function PlayState:update(dt)
     if love.keyboard.wasPressed('escape') then
         love.event.quit()
+    end
+
+    if love.keyboard.wasPressed('space') then
+        self.map = LevelMaker.generate()
     end
 
     
@@ -41,15 +23,6 @@ function PlayState:render()
     love.graphics.printf('Digger', 0, VIRTUAL_HEIGHT / 2 - 32, VIRTUAL_WIDTH, 'center')
     
     self.map:render()
-
-   --[[  for y = 1, #self.tiles do
-
-        for x = 1, #self.tiles[1] do
-            self.tiles[y][x]:render(self.x, self.y, self.color)
-        end
-
-    end ]]
-
 
 
 end
