@@ -12,6 +12,9 @@ require 'src/Util'
 require 'src/Tile'
 require 'src/LevelMaker'
 require 'src/GameLevel'
+require 'src/GameObject'
+require 'src/game_objects'
+require 'src/Animation'
 
 gFonts = {
     ['small'] = love.graphics.newFont('fonts/font.ttf', 8),
@@ -20,9 +23,12 @@ gFonts = {
 }
 
 gTextures = {
-    ['grass'] = love.graphics.newImage('graphics/grasstiles.png')}
+    ['grass'] = love.graphics.newImage('graphics/grasstiles.png'),
+    ['apple'] = love.graphics.newImage('graphics/Apple.png')
+}
 
 
 gFrames = {
-    ['tiles'] = GenerateQuads(gTextures['grass'], TILE_SIZE, TILE_SIZE)
+    ['tiles'] = GenerateQuads(gTextures['grass'], TILE_SIZE, TILE_SIZE),
+    ['apple'] = GenerateQuads(gTextures['apple'], 32, 32)
 }
