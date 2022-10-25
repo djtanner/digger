@@ -10,6 +10,8 @@ require 'src/states/BaseState'
 require 'src/states/game/PlayState'
 require 'src/Util'
 require 'src/Tile'
+require 'src/LevelMaker'
+require 'src/GameLevel'
 
 gFonts = {
     ['small'] = love.graphics.newFont('fonts/font.ttf', 8),

@@ -2,24 +2,22 @@ Tile = Class{}
 
 function Tile:init(x, y, color)
     
-    -- board positions
-    self.gridX = x
-    self.gridY = y
+    self.width = TILE_SIZE
 
     -- coordinate positions
-    self.x = (self.gridX - 1) * 16
-    self.y = (self.gridY - 1) * 16
+    self.x = x
+    self.y = y
 
     -- tile appearance/points
     self.color = color
 
 end
 
-function Tile:render(x, y)
+function Tile:render()
     
  
     love.graphics.setColor(255, 255, 255, 255)
     love.graphics.draw(gTextures['grass'], gFrames['tiles'][self.color],
-        self.x + x, self.y + y)
+    (self.x - 1) * TILE_SIZE, (self.y - 1) * TILE_SIZE)
 
 end

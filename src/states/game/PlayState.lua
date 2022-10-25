@@ -1,7 +1,9 @@
 PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
-   self.x = 1
+    self.map = LevelMaker.generate()
+
+--[[    self.x = 1
    self.y = 1
 
 
@@ -20,7 +22,7 @@ function PlayState:init()
          
             
         end
-    end
+    end ]]
 
     
 end
@@ -38,13 +40,15 @@ function PlayState:render()
     love.graphics.setColor(175/255, 53/255, 42/255, 1)
     love.graphics.printf('Digger', 0, VIRTUAL_HEIGHT / 2 - 32, VIRTUAL_WIDTH, 'center')
     
-    for y = 1, #self.tiles do
+    self.map:render()
+
+   --[[  for y = 1, #self.tiles do
 
         for x = 1, #self.tiles[1] do
             self.tiles[y][x]:render(self.x, self.y, self.color)
         end
 
-    end
+    end ]]
 
 
 
