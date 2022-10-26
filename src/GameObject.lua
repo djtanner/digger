@@ -1,3 +1,5 @@
+
+
 GameObject = Class{}
 
 function GameObject:init(def, x, y)
@@ -31,14 +33,6 @@ function GameObject:init(def, x, y)
 end
 
 
-
-function GameObject:update(dt)
-    if self.currentAnimation then
-        self.currentAnimation:update(dt)
-    end
-
-end
-
 function GameObject:createAnimations(animations)
     local animationsReturned = {}
 
@@ -57,10 +51,19 @@ function GameObject:changeAnimation(name)
     self.currentAnimation = self.animations[name]
 end
 
+function GameObject:update(dt)
+    if self.currentAnimation then
+        self.currentAnimation:update(dt)
+    end
+
+end
+
+
 function GameObject:render()
    
     local anim = self.animations
+    
 
-    love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
+    love.graphics.draw(gTextures['apple'], gFrames['apple'][1],
         math.floor(self.x), math.floor(self.y))
 end

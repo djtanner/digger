@@ -79,17 +79,14 @@ function LevelMaker.generate()
 
     for i = 1, 10 do
         
+        local apple =  GameObject(GAME_OBJECT_DEFS["apple"],
+            math.random(16, VIRTUAL_WIDTH-16),
+            math.random(16, 240))
 
-        table.insert(objects, GameObject {
-            animations = GAME_OBJECT_DEFS["apple"].animations,
-            x = math.random(TILE_SIZE,
-                VIRTUAL_WIDTH - TILE_SIZE * 2 - 16),
-            y = math.random(TILE_SIZE,
-                VIRTUAL_HEIGHT - (VIRTUAL_HEIGHT - 24 * TILE_SIZE) - TILE_SIZE - 16),
-            
-            width = 32,
-            height = 32   
-        })
+    
+        table.insert(objects, apple)
+        
+
     end
 
 
