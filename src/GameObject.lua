@@ -3,6 +3,8 @@
 GameObject = Class{}
 
 function GameObject:init(def, x, y)
+
+    self.animations = self:createAnimations(def.animations)
     
     -- string identifying this object type
     self.type = def.type
@@ -28,10 +30,8 @@ function GameObject:init(def, x, y)
    -- self.onCollide = function() end
    self.onCollide = def.onCollide
 
-   self.animations = self:createAnimations(def.animations)
 
 end
-
 
 function GameObject:createAnimations(animations)
     local animationsReturned = {}
@@ -47,11 +47,19 @@ function GameObject:createAnimations(animations)
     return animationsReturned
 end
 
+
+function GameObject:changeState(name, params)
+    self.stateMachine:change(name, params)
+end
+
 function GameObject:changeAnimation(name)
     self.currentAnimation = self.animations[name]
 end
 
 function GameObject:update(dt)
+    
+    self.stateMachine:update(dt)
+    
     if self.currentAnimation then
         self.currentAnimation:update(dt)
     end
@@ -61,9 +69,8 @@ end
 
 function GameObject:render()
    
-    local anim = self.animations
+    self.stateMachine:render()
     
-
-    love.graphics.draw(gTextures['apple'], gFrames['apple'][1],
-        math.floor(self.x), math.floor(self.y))
+ --   love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][1],
+   --     math.floor(self.entity.x - self.entity.offsetX), math.floor(self.entity.y - self.entity.offsetY))
 end

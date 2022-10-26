@@ -15,6 +15,7 @@ require 'src/GameLevel'
 require 'src/GameObject'
 require 'src/game_objects'
 require 'src/Animation'
+require 'src/states/object/FruitIdleState'
 
 gFonts = {
     ['small'] = love.graphics.newFont('fonts/font.ttf', 8),

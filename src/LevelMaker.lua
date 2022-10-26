@@ -68,7 +68,7 @@ function LevelMaker.generate()
         mazeY = math.min(math.max(mazeY + yDirection, 1), 22)            
    
             if (tiles[mazeX][mazeY].color == 2) then
-                tiles[mazeX][mazeY].color = 1
+               tiles[mazeX][mazeY].color = 1
                 tilesDug = tilesDug + 1
             end
         end
@@ -83,10 +83,14 @@ function LevelMaker.generate()
             math.random(16, VIRTUAL_WIDTH-16),
             math.random(16, 240))
 
-    
-        table.insert(objects, apple)
         
+        table.insert(objects, apple)
 
+       objects[i].stateMachine = StateMachine {
+            ['idle'] = function() return FruitIdleState(objects[i]) end
+        }
+        
+        objects[i]:changeState('idle')
     end
 
 
