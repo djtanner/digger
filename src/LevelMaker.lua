@@ -76,15 +76,17 @@ function LevelMaker.generate()
     end
 
     -- Add some fruit to the level
-
+    local types = {'apple', 'banana','cherry','melon','kiwi','pineapple','strawberry'}
     for i = 1, 10 do
         
-        local apple =  GameObject(GAME_OBJECT_DEFS["apple"],
+        local type = types[math.random(#types)]
+
+        local fruit =  GameObject(GAME_OBJECT_DEFS[type],
             math.random(32, VIRTUAL_WIDTH-32),
             math.random(32, 192))
 
         
-        table.insert(objects, apple)
+        table.insert(objects, fruit)
 
        objects[i].stateMachine = StateMachine {
             ['idle'] = function() return FruitIdleState(objects[i]) end
