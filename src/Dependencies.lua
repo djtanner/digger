@@ -3,8 +3,10 @@ Event = require 'lib/knife.event'
 push = require 'lib/push'
 Timer = require 'lib/knife.timer'
 
-
+require 'src/Animation'
 require 'src/constants'
+require 'src/GameObject'
+require 'src/game_objects'
 require 'src/StateMachine'
 require 'src/states/BaseState'
 require 'src/states/game/PlayState'
@@ -12,9 +14,8 @@ require 'src/Util'
 require 'src/Tile'
 require 'src/LevelMaker'
 require 'src/GameLevel'
-require 'src/GameObject'
-require 'src/game_objects'
-require 'src/Animation'
+
+
 require 'src/states/object/FruitIdleState'
 
 gFonts = {

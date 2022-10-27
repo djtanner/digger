@@ -44,31 +44,37 @@ function GameObject:createAnimations(animations)
         }
     end
 
+
     return animationsReturned
 end
 
 
 function GameObject:changeState(name, params)
     self.stateMachine:change(name, params)
+
+    
 end
 
 function GameObject:changeAnimation(name)
     self.currentAnimation = self.animations[name]
+
+    
 end
 
 function GameObject:update(dt)
-    
+    print("test change gameobject update")
     self.stateMachine:update(dt)
     
-    if self.currentAnimation then
+   if self.currentAnimation then
         self.currentAnimation:update(dt)
-    end 
+    end  
+ 
 
 end
 
 
 function GameObject:render()
-   
+    
     self.stateMachine:render()
     
 end

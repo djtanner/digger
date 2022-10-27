@@ -36,6 +36,8 @@ function Animation:update(dt)
         return
     end
 
+    print("animation update")
+
     -- no need to update if animation is only one frame
     if #self.frames > 1 then
         self.timer = self.timer + dt

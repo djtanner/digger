@@ -1,3 +1,4 @@
+
 FruitIdleState = Class{__includes = BaseState}
 
 function FruitIdleState:init(gameobject)
@@ -5,13 +6,15 @@ function FruitIdleState:init(gameobject)
     self.gameobject = gameobject
     self.gameobject:changeAnimation('pulse')
 
+    print("pulse")
   
 end
 
 function FruitIdleState:update(dt)
+  
    self.gameobject.currentAnimation:update(dt)
-    
-
+  
+print("update function")
 
 end
 
