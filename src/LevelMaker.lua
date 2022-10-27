@@ -1,12 +1,15 @@
 LevelMaker = Class{}
 
 function LevelMaker.generate()
+
+    local tiles = {}
+    local objects = {}
     
     local tilesToRemove = 120;
     mazeX = 4
     mazeY = 1
  
-     local tiles = {}
+     
  
      for tileY = 1, 24 do
          
@@ -42,7 +45,8 @@ function LevelMaker.generate()
         tiles[14][tileY].color = 1
     end
 
-        -- crawl through and make a maze with the dirt tiles
+        -- crawl through the level and make a maze with the dirt tiles
+        -- maze algorithm is the same logic that was used in dreadhalls GD50
 
         tilesDug = 0
 
@@ -64,14 +68,38 @@ function LevelMaker.generate()
         mazeY = math.min(math.max(mazeY + yDirection, 1), 22)            
    
             if (tiles[mazeX][mazeY].color == 2) then
-                tiles[mazeX][mazeY].color = 1
+               tiles[mazeX][mazeY].color = 1
                 tilesDug = tilesDug + 1
             end
         end
 
     end
 
-     return GameLevel(tiles)
+    -- Add some fruit to the level
+    local types = {'apple', 'banana','cherry','melon','kiwi','pineapple','strawberry'}
+    for i = 1, 10 do
+        
+        local type = types[math.random(#types)]
+
+        local fruit =  GameObject(GAME_OBJECT_DEFS[type],
+            math.random(32, VIRTUAL_WIDTH-32),
+            math.random(32, 192))
+
+        
+        table.insert(objects, fruit)
+
+       objects[i].stateMachine = StateMachine {
+            ['idle'] = function() return FruitIdleState(objects[i]) end
+        }
+        
+        objects[i]:changeState('idle')
+
+        
+    end
+
+
+
+     return GameLevel(tiles, objects)
     
     
 end
