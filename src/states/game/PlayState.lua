@@ -20,7 +20,7 @@ function PlayState:update(dt)
     end
 
     if love.keyboard.wasPressed('space') then
-        self.map = LevelMaker.generate()
+        self.level = LevelMaker.generate()
     end
 
     self.level:update(dt)
