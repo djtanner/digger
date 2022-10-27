@@ -33,6 +33,7 @@ gTextures = {
     ['melon'] = love.graphics.newImage('graphics/Melon.png'),
     ['pineapple'] = love.graphics.newImage('graphics/Pineapple.png'),
     ['strawberry'] = love.graphics.newImage('graphics/Strawberry.png'),
+    ['character-walk'] = love.graphics.newImage('graphics/character_walk.png'),
 }
 
 
@@ -45,4 +46,5 @@ gFrames = {
     ['melon'] = GenerateQuads(gTextures['melon'], 32, 32),
     ['pineapple'] = GenerateQuads(gTextures['pineapple'], 32, 32),
     ['strawberry'] = GenerateQuads(gTextures['strawberry'], 32, 32),
+    ['character-walk'] = GenerateQuads(gTextures['character-walk'], 48, 48),
 }
