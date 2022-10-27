@@ -62,7 +62,7 @@ function GameObject:update(dt)
     
     if self.currentAnimation then
         self.currentAnimation:update(dt)
-    end
+    end 
 
 end
 
@@ -71,6 +71,4 @@ function GameObject:render()
    
     self.stateMachine:render()
     
- --   love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][1],
-   --     math.floor(self.entity.x - self.entity.offsetX), math.floor(self.entity.y - self.entity.offsetY))
 end

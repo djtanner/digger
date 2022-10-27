@@ -80,8 +80,8 @@ function LevelMaker.generate()
     for i = 1, 10 do
         
         local apple =  GameObject(GAME_OBJECT_DEFS["apple"],
-            math.random(16, VIRTUAL_WIDTH-16),
-            math.random(16, 240))
+            math.random(32, VIRTUAL_WIDTH-32),
+            math.random(32, 192))
 
         
         table.insert(objects, apple)
@@ -91,6 +91,8 @@ function LevelMaker.generate()
         }
         
         objects[i]:changeState('idle')
+
+        
     end
 
 
