@@ -62,7 +62,7 @@ function GameObject:changeAnimation(name)
 end
 
 function GameObject:update(dt)
-    print("test change gameobject update")
+    
     self.stateMachine:update(dt)
     
    if self.currentAnimation then
