@@ -4,11 +4,42 @@ function PlayState:init()
     self.level = LevelMaker.generate()
     self.tiles = self.level.tiles
     
+    self.player = Player {
+        animations = ENTITY_DEFS['player'].animations,
+        walkSpeed = ENTITY_DEFS['player'].walkSpeed,
+        x = VIRTUAL_WIDTH / 2,
+        y = VIRTUAL_HEIGHT / 2,
+        width = 48, 
+        height = 48,
+    }
+
+    self.player.stateMachine = StateMachine {
+        ['idle'] = function() return PlayerIdleState(self.player) end,
+        ['walking'] = function() return PlayerWalkingState(self.player) end,
+    }
+    self.player:changeState('idle')
 
 end
 
 function PlayState:enter(params)
     self.level = LevelMaker.generate()
+    self.tiles = self.level.tiles
+
+    self.player = Player {
+        animations = ENTITY_DEFS['player'].animations,
+        walkSpeed = ENTITY_DEFS['player'].walkSpeed,
+        x = VIRTUAL_WIDTH / 2,
+        y = VIRTUAL_HEIGHT / 2,
+        width = 48, 
+        height = 48,
+    }
+
+    self.player.stateMachine = StateMachine {
+        ['idle'] = function() return PlayerIdleState(self.player) end,
+        ['walking'] = function() return PlayerWalkingState(self.player) end,
+    }
+    self.player:changeState('idle')
+
 end
     
 
@@ -24,6 +55,7 @@ function PlayState:update(dt)
     end
 
     self.level:update(dt)
+    self.player:update(dt)
     
     
 end
@@ -34,6 +66,7 @@ function PlayState:render()
     love.graphics.printf('Digger', 0, VIRTUAL_HEIGHT / 2 - 32, VIRTUAL_WIDTH, 'center')
     
     self.level:render()
+    self.player:render()
 
 
 end

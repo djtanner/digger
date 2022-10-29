@@ -14,9 +14,18 @@ require 'src/Util'
 require 'src/Tile'
 require 'src/LevelMaker'
 require 'src/GameLevel'
+require 'src/entity_defs'
+require 'src/Entity'
+require 'src/Player'
+
 
 
 require 'src/states/object/FruitIdleState'
+require 'src/states/entity/EntityIdleState'
+require 'src/states/entity/player/PlayerIdleState'
+require 'src/states/entity/player/PlayerWalkState'
+
+
 
 gFonts = {
     ['small'] = love.graphics.newFont('fonts/font.ttf', 8),
@@ -34,6 +43,7 @@ gTextures = {
     ['pineapple'] = love.graphics.newImage('graphics/Pineapple.png'),
     ['strawberry'] = love.graphics.newImage('graphics/Strawberry.png'),
     ['character-walk'] = love.graphics.newImage('graphics/character_walk.png'),
+    ['character-idle'] = love.graphics.newImage('graphics/character_idle.png'),
 }
 
 
@@ -47,4 +57,5 @@ gFrames = {
     ['pineapple'] = GenerateQuads(gTextures['pineapple'], 32, 32),
     ['strawberry'] = GenerateQuads(gTextures['strawberry'], 32, 32),
     ['character-walk'] = GenerateQuads(gTextures['character-walk'], 48, 48),
+    ['character-idle'] = GenerateQuads(gTextures['character-idle'], 48, 48),
 }
