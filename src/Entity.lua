@@ -29,6 +29,10 @@ function Entity:init(def)
     self.health = def.health
 
     self.dead = false
+
+    self.level = def.level
+
+    self.tiles = self.level.tiles
 end
 
 function Entity:createAnimations(animations)

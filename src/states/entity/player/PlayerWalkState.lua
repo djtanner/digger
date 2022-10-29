@@ -11,9 +11,10 @@ PlayerWalkState = Class{__includes = EntityWalkState}
 function PlayerWalkState:init(player, level)
     self.entity = player
     self.level = level
+    
 
     -- render offset for spaced character sprite; negated in render function of state
-    self.entity.offsetY = 5
+    self.entity.offsetY = 0
     self.entity.offsetX = 0
 end
 
@@ -38,6 +39,29 @@ function PlayerWalkState:update(dt)
 
     -- perform base collision detection against walls
     EntityWalkState.update(self, dt)
+
+    -- if walking on a grass tile, change it to dirt
+    for k,tile in pairs(self.level.tiles) do
+        local checkTileX = math.floor(self.entity.x / TILE_SIZE + 2)
+        local checkTileY = math.floor(self.entity.y / TILE_SIZE + 2)
+
+
+        print("tileX", checkTileX)
+        print("tileY", checkTileY)
+        print("color", self.level.tiles[checkTileY][checkTileX].color)
+        
+        
+
+        if(self.level.tiles[checkTileY][checkTileX].color == 2) then
+            self.level.tiles[checkTileY][checkTileX].color = 1
+        end
+
+
+
+
+    end
+
+
 
 
         -- check if we've collided with any collidable gameobjects (pots)

@@ -11,11 +11,13 @@ function PlayState:init()
         y = VIRTUAL_HEIGHT / 2,
         width = 48, 
         height = 48,
+        level = self.level,
+        tiles = self.tiles
     }
 
     self.player.stateMachine = StateMachine {
-        ['idle'] = function() return PlayerIdleState(self.player) end,
-        ['walking'] = function() return PlayerWalkState(self.player) end,
+        ['idle'] = function() return PlayerIdleState(self.player, self.level) end,
+        ['walking'] = function() return PlayerWalkState(self.player, self.level) end,
     }
     self.player:changeState('idle')
 
@@ -32,11 +34,13 @@ function PlayState:enter(params)
         y = VIRTUAL_HEIGHT / 2 - TILE_SIZE,
         width = 48, 
         height = 48,
+        level = self.level,
+        tiles = self.tiles
     }
 
     self.player.stateMachine = StateMachine {
-        ['idle'] = function() return PlayerIdleState(self.player) end,
-        ['walking'] = function() return PlayerWalkState(self.player) end,
+        ['idle'] = function() return PlayerIdleState(self.player, self.level) end,
+        ['walking'] = function() return PlayerWalkState(self.player, self.level) end,
     }
     self.player:changeState('idle')
 
@@ -56,6 +60,8 @@ function PlayState:update(dt)
 
     self.level:update(dt)
     self.player:update(dt)
+
+
     
     
 end
