@@ -46,9 +46,9 @@ function PlayerWalkState:update(dt)
         local checkTileY = math.floor(self.entity.y / TILE_SIZE + 2)
 
 
-        print("tileX", checkTileX)
+   --[[      print("tileX", checkTileX)
         print("tileY", checkTileY)
-        print("color", self.level.tiles[checkTileY][checkTileX].color)
+        print("color", self.level.tiles[checkTileY][checkTileX].color) ]]
         
         
 
