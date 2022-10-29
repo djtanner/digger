@@ -31,15 +31,15 @@ function EntityWalkState:update(dt)
     if self.entity.direction == 'left' then
         self.entity.x = self.entity.x - self.entity.walkSpeed * dt
         
-        if self.entity.x <=  TILE_SIZE then 
-            self.entity.x =  TILE_SIZE
+        if self.entity.x <=  0 - TILE_SIZE then 
+            self.entity.x =  0 - TILE_SIZE
             self.bumped = true
         end
     elseif self.entity.direction == 'right' then
         self.entity.x = self.entity.x + self.entity.walkSpeed * dt
 
-        if self.entity.x + self.entity.width >= VIRTUAL_WIDTH - TILE_SIZE * 2 then
-            self.entity.x = VIRTUAL_WIDTH - TILE_SIZE * 2 - self.entity.width
+        if self.entity.x  >= VIRTUAL_WIDTH + TILE_SIZE - self.entity.width  then
+            self.entity.x = VIRTUAL_WIDTH + TILE_SIZE - self.entity.width
             self.bumped = true
         end
     elseif self.entity.direction == 'up' then
@@ -52,8 +52,7 @@ function EntityWalkState:update(dt)
     elseif self.entity.direction == 'down' then
         self.entity.y = self.entity.y + self.entity.walkSpeed * dt
 
-        local bottomEdge = VIRTUAL_HEIGHT - (VIRTUAL_HEIGHT - MAP_HEIGHT * TILE_SIZE) 
-             - TILE_SIZE
+             local bottomEdge = VIRTUAL_HEIGHT + TILE_SIZE
 
         if self.entity.y + self.entity.height >= bottomEdge then
             self.entity.y = bottomEdge - self.entity.height
@@ -63,7 +62,7 @@ function EntityWalkState:update(dt)
 end
 
 function EntityWalkState:processAI(params, dt)
-    local room = params.room
+    local level = params.level
     local directions = {'left', 'right', 'up', 'down'}
 
     if self.moveDuration == 0 or self.bumped then
