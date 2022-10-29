@@ -9,10 +9,11 @@ function PlayState:init()
         walkSpeed = ENTITY_DEFS['player'].walkSpeed,
         x = VIRTUAL_WIDTH / 2,
         y = VIRTUAL_HEIGHT / 2,
-        width = 48, 
-        height = 48,
+        width = ENTITY_DEFS['player'].width, 
+        height = ENTITY_DEFS['player'].height,
         level = self.level,
-        tiles = self.tiles
+        tiles = self.tiles,
+        
     }
 
     self.player.stateMachine = StateMachine {
@@ -32,10 +33,11 @@ function PlayState:enter(params)
         walkSpeed = ENTITY_DEFS['player'].walkSpeed,
         x = VIRTUAL_WIDTH / 2 - TILE_SIZE,
         y = VIRTUAL_HEIGHT / 2 - TILE_SIZE,
-        width = 48, 
-        height = 48,
+        width = ENTITY_DEFS['player'].width, 
+        height = ENTITY_DEFS['player'].height,
         level = self.level,
-        tiles = self.tiles
+        tiles = self.tiles,
+        
     }
 
     self.player.stateMachine = StateMachine {

@@ -77,7 +77,7 @@ function LevelMaker.generate()
 
     -- Add some fruit to the level
     local types = {'apple', 'banana','cherry','melon','kiwi','pineapple','strawberry'}
-    for i = 1, 10 do
+    for i = 1, 8 do
         
         local type = types[math.random(#types)]
 

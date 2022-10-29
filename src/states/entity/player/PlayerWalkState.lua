@@ -57,15 +57,14 @@ function PlayerWalkState:update(dt)
         end
 
    
-        --[[ print("entity x", self.entity.x)
+        print("entity x", self.entity.x)
         print("entity y", self.entity.y)
         print("object 1 x", self.level.objects[1].x)
-        print("object 1 y", self.level.objects[1].y) ]]
+        print("object 1 y", self.level.objects[1].y)
 
         -- check if we've collided with any collidable gameobjects (fruits)
         for k,object in pairs(self.level.objects) do
             if self.entity:collides(object) and object.type == "fruit" then
-                print("collided with fruit", object.x)
                 
                 if object.isConsumable then
                     -- TODO - increase score

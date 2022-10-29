@@ -22,8 +22,8 @@ function Entity:init(def)
     self.type = def.type
 
     -- drawing offsets for padded sprites
-    --self.offsetX = def.offsetX or 0
-    --self.offsetY = def.offsetY or 0
+    self.offsetX = def.offsetX or 0
+    self.offsetY = def.offsetY or 0
 
     self.walkSpeed = def.walkSpeed
 
@@ -54,8 +54,11 @@ end
     AABB with some slight shrinkage of the box on the top side for perspective.
 ]]
 function Entity:collides(target)
-  return not (self.x + self.width < target.x or self.x > target.x + target.width or
-                self.y + self.height < target.y or self.y > target.y + target.height) 
+   
+
+return not (self.x + self.width < target.x or self.x > target.x + target.width or
+                self.y + self.height < target.y or self.y > target.y + target.height)   
+       
 
 end
 
