@@ -14,6 +14,7 @@ function PlayState:init()
         level = self.level,
         tiles = self.tiles,
         
+        
     }
 
     self.player.stateMachine = StateMachine {
@@ -37,7 +38,7 @@ function PlayState:enter(params)
         height = ENTITY_DEFS['player'].height,
         level = self.level,
         tiles = self.tiles,
-        
+ 
     }
 
     self.player.stateMachine = StateMachine {

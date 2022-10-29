@@ -15,8 +15,8 @@ function PlayerWalkState:init(player, level)
     
 
     -- render offset for spaced character sprite; negated in render function of state
-    self.entity.offsetY = 0
-    self.entity.offsetX = 0
+    self.entity.offsetY = 16
+    self.entity.offsetX = 16
 end
 
 function PlayerWalkState:update(dt)
@@ -57,11 +57,6 @@ function PlayerWalkState:update(dt)
         end
 
    
-        print("entity x", self.entity.x)
-        print("entity y", self.entity.y)
-        print("object 1 x", self.level.objects[1].x)
-        print("object 1 y", self.level.objects[1].y)
-
         -- check if we've collided with any collidable gameobjects (fruits)
         for k,object in pairs(self.level.objects) do
             if self.entity:collides(object) and object.type == "fruit" then
