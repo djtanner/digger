@@ -13,6 +13,9 @@ function Tile:init(x, y, color)
 
 end
 
+
+
+
 function Tile:render()
     
  

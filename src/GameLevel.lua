@@ -10,12 +10,11 @@ end
 
 function GameLevel:update(dt)
     
-   -- self.tiles:update(dt)
-
+    
     for k, object in pairs(self.objects) do
         object:update(dt)
         
-    end
+    end 
 
 end
 
@@ -23,7 +22,7 @@ end
 function GameLevel:render()
     for y = 1, #self.tiles do
 
-        for x = 1, #self.tiles[1] do
+        for x = 1, #self.tiles do
             self.tiles[y][x]:render(self.x, self.y, self.color)
         end
 
