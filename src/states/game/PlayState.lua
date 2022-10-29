@@ -108,9 +108,8 @@ function PlayState:spawnEnemies()
             tiles = self.tiles,
 
             -- always spawn in top corner
-            x = 375,
-            y = 16,
-            
+            x = 360,
+            y = 0,
             width = ENTITY_DEFS['pink-kitty'].width,
             height = ENTITY_DEFS['pink-kitty'].height,
            
