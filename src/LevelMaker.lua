@@ -94,10 +94,9 @@ function LevelMaker.generate()
         
         objects[i]:changeState('idle')
 
+
         
     end
-
-
 
      return GameLevel(tiles, objects)
     

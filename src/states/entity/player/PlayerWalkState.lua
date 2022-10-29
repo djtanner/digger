@@ -1,4 +1,5 @@
---[[
+--[[Some of this code was reused from:
+
     GD50
     Legend of Zelda
 
@@ -50,81 +51,31 @@ function PlayerWalkState:update(dt)
         print("tileY", checkTileY)
         print("color", self.level.tiles[checkTileY][checkTileX].color) ]]
         
-        
 
         if(self.level.tiles[checkTileY][checkTileX].color == 2) then
             self.level.tiles[checkTileY][checkTileX].color = 1
         end
 
+   
+        --[[ print("entity x", self.entity.x)
+        print("entity y", self.entity.y)
+        print("object 1 x", self.level.objects[1].x)
+        print("object 1 y", self.level.objects[1].y) ]]
 
-
-
-    end
-
-
-
-
-        -- check if we've collided with any collidable gameobjects (pots)
-        --[[ for k,object in pairs(self.dungeon.currentRoom.objects) do
-            if self.entity:collides(object) then
-                if object.solid then
-                      --  print('objectx', object.x)
-                      --  print('selfx', self.entity.x)
-                      --  print('objecty', object.y)
-                      --  print('selfy', math.floor(self.entity.y+0.5))
-                      --  print((object.y  >= math.floor(self.entity.y +self.entity.height + .5)) )
-
-                    -- walking left and object has to be left of me and not fully above or fully below
-                    if self.entity.direction == 'left' 
-                    and (object.x  <= math.floor(self.entity.x + object.width+0.5 )) 
-                    and ((self.entity.y + self.entity.height > object.y and self.entity.y + self.entity.height < object.y +object.height) or (
-                        self.entity.y < object.y + object.height and self.entity.y > object.y
-                     ))
-                     then
-
-
-                       self.entity.x = object.x  + object.width
-                       --print('walking left')
-
-                      
-
-                        -- walking right and object has to be right of me and not fully above or fully below
-                    elseif self.entity.direction == 'right' 
-                    and (object.x >= math.floor(self.entity.x  + 0.5 )) 
-                    and ( (self.entity.y + self.entity.height > object.y and self.entity.y + self.entity.height < object.y +object.height) or (
-                        self.entity.y < object.y + object.height and self.entity.y > object.y
-                     ))
+        -- check if we've collided with any collidable gameobjects (fruits)
+        for k,object in pairs(self.level.objects) do
+            if self.entity:collides(object) and object.type == "fruit" then
+                print("collided with fruit", object.x)
+                
+                if object.isConsumable then
+                    -- TODO - increase score
+                    table.remove(self.level.objects,k)
+                end     
                     
-                    then
-                        self.entity.x =object.x - self.entity.width 
-                        --print('walking right')
-                       
-
-
-                    --walking up and object must be above me and not fully right or left    
-                    elseif self.entity.direction == 'up'
-                    and (object.y  <= math.floor(self.entity.y + .5)) 
-                    and ( (self.entity.x + self.entity.width > object.x and self.entity.x + self.entity.width <object.x +object.width) or (
-                        self.entity.x < object.x + object.width and self.entity.x > object.x))
-                    then
-                        self.entity.y = object.y + object.height/3
-                        --print('walking up')
-                    
-                        --walking down and object must be below me and not fully right or left
-                    elseif self.entity.direction == 'down' 
-                    and (object.y  >= math.floor(self.entity.y +self.entity.height/2 + .5)) 
-                    and ((self.entity.x + self.entity.width > object.x and self.entity.x + self.entity.width < object.x +object.width) or (
-                        self.entity.x < object.x + object.width and self.entity.x > object.x))
-                    
-                    then
-                        self.entity.y = object.y - self.entity.height
-                        --print('walking down')
-                        
-                    end
                 end
             end
             
-        end ]]
+        end 
 
     -- if we bumped something when checking collision, check any object collisions
     --[[ if self.bumped then
