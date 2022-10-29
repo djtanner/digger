@@ -15,7 +15,7 @@ function PlayState:init()
 
     self.player.stateMachine = StateMachine {
         ['idle'] = function() return PlayerIdleState(self.player) end,
-        ['walking'] = function() return PlayerWalkingState(self.player) end,
+        ['walking'] = function() return PlayerWalkState(self.player) end,
     }
     self.player:changeState('idle')
 
@@ -28,15 +28,15 @@ function PlayState:enter(params)
     self.player = Player {
         animations = ENTITY_DEFS['player'].animations,
         walkSpeed = ENTITY_DEFS['player'].walkSpeed,
-        x = VIRTUAL_WIDTH / 2,
-        y = VIRTUAL_HEIGHT / 2,
+        x = VIRTUAL_WIDTH / 2 - TILE_SIZE,
+        y = VIRTUAL_HEIGHT / 2 - TILE_SIZE,
         width = 48, 
         height = 48,
     }
 
     self.player.stateMachine = StateMachine {
         ['idle'] = function() return PlayerIdleState(self.player) end,
-        ['walking'] = function() return PlayerWalkingState(self.player) end,
+        ['walking'] = function() return PlayerWalkState(self.player) end,
     }
     self.player:changeState('idle')
 
