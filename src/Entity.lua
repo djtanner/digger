@@ -9,8 +9,11 @@ Entity = Class{}
 
 function Entity:init(def)
 
-    
+    if def.type == 'monster' then
+        self.direction = 'left' else
+
     self.direction = 'down'
+        end
 
     self.animations = self:createAnimations(def.animations)
 

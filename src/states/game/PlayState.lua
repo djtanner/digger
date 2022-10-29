@@ -71,7 +71,13 @@ function PlayState:update(dt)
     self.level:update(dt)
     self.player:update(dt)
 
+    for i = #self.enemies, 1, -1 do
+        local enemy = self.enemies[i]
+        enemy:processAI({level = self.level}, dt)
+            enemy:update(dt)
 
+    end
+    
     
     
 end
@@ -106,10 +112,11 @@ function PlayState:spawnEnemies()
             walkSpeed = MONSTER_WALK_SPEED,
             level = self.level,
             tiles = self.tiles,
+            type = "monster",
 
             -- always spawn in top corner
-            x = 360,
-            y = 0,
+            x = 355,
+            y = 0 - TILE_SIZE/2,
             width = ENTITY_DEFS['pink-kitty'].width,
             height = ENTITY_DEFS['pink-kitty'].height,
            
