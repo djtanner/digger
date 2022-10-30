@@ -1,4 +1,4 @@
---[[Code reused from:
+--[[Some Code reused from:
     GD50
     Legend of Zelda
 
@@ -78,14 +78,14 @@ function EntityWalkState:processAI(params, dt)
     local directions = {'left', 'right', 'up', 'down'}
 
     local tileLeft = level:pointToTile(self.entity.x, self.entity.y)
-    local tileDown = level:pointToTile(self.entity.x , self.entity.y + self.entity.height)
+    local tileDown = level:pointToTile(self.entity.x + self.entity.width/2, self.entity.y + self.entity.height)
     local tileUp = level:pointToTile(self.entity.x + self.entity.width, self.entity.y - TILE_SIZE)
     
     print("x", math.floor(self.entity.x))
     print("y", math.floor(self.entity.y))
     
     
--- only allow walking on dirt tiles
+-- only allow walking on dirt tiles for cat
 
         -- hit the  bottom right corner
         if self.entity.x >= 345 and self.entity.y == 208 then
@@ -96,9 +96,14 @@ function EntityWalkState:processAI(params, dt)
 
 
         -- hit the bottom left corner
-        elseif self.entity.x <= 4 and self.entity.y == 208 then      
+        elseif self.entity.x <= 4 and self.entity.y == 208 and self.entity.direction == "left" then      
         self.entity.direction = 'up'
         self.entity:changeAnimation('walk-up')
+        print('bottom left corner')
+
+    elseif self.entity.x <= 4 and self.entity.y == 208 and self.entity.direction == "down" then      
+        self.entity.direction = 'right'
+        self.entity:changeAnimation('walk-right')
         print('bottom left corner')
 
         -- hit the top left corner
@@ -162,6 +167,16 @@ function EntityWalkState:processAI(params, dt)
             end   
             print("hit top wall")
 
+        --top row - sometimes move down or continue  
+    elseif self.entity.direction == 'right' and self.entity.x > 20 and self.entity.y == 0 and tileDown and tileDown.color == 1 then
+            
+        if math.random(5) == 5 then 
+        self.entity.direction = 'down'
+        self.entity:changeAnimation('walk-down')
+        print('random down from top row')
+        
+        end 
+
         --hit the bottom wall
         elseif self.entity.x >= 150 and self.entity.y == 208 and self.entity.direction == 'down' then
             
@@ -175,13 +190,7 @@ function EntityWalkState:processAI(params, dt)
             print('hit bottom wall')
 
 
-        -- if walking on up around middle of board switch to right or left
-  --[[       elseif self.entity.y < 200 and self.entity.y > 100 and tileLeft and tileLeft.color == 1 and self.entity.direction == 'down' then
-            self.entity.direction = 'left'
-            self.entity:changeAnimation('walk-left')
-            print('move down from top row')   ]]
-
-        elseif self.entity.direction == 'up'  and tileUp and tileUp.color == 2 and tileLeft and tileLeft.color == 1 and self.entity.x > 0 then
+        elseif self.entity.direction == 'up'  and tileUp and tileUp.color == 2 and tileLeft and tileLeft.color == 1 and self.entity.x > 16 then
             self.entity.direction = 'left'
             self.entity: changeAnimation('walk-left')
             print('move left if top is grass')
@@ -192,10 +201,12 @@ function EntityWalkState:processAI(params, dt)
             print('backtrack if top and left is grass')
 
         
-        elseif self.entity.direction == 'left' and tileUp and tileUp.color == 1 then
+        --[[ elseif self.entity.direction == 'left' and tileUp and tileUp.color == 1 and self.entity.y <= 208 then
+            if math.random(5) > 3 then
             self.entity.direction = 'up'
             self.entity: changeAnimation('walk-up')
-            print('move up')
+            print('move up random')
+            end ]]
 
         elseif (self.entity.direction == 'right' or self.entity.direction == 'left') and tileUp and tileUp.color == 2 and tileLeft and tileLeft.color == 1 and self.entity.x > 0 then
             self.entity.direction = 'left'
