@@ -1,6 +1,8 @@
 PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
+
+    self.enemies = {}
     self.level = LevelMaker.generate()
     self.tiles = self.level.tiles
     
@@ -23,9 +25,12 @@ function PlayState:init()
     }
     self.player:changeState('idle')
 
+    self:spawnEnemies()
+
 end
 
 function PlayState:enter(params)
+    self.enemies = {}
     self.level = LevelMaker.generate()
     self.tiles = self.level.tiles
 
@@ -47,6 +52,8 @@ function PlayState:enter(params)
     }
     self.player:changeState('idle')
 
+    self:spawnEnemies()
+
 end
     
 
@@ -64,6 +71,12 @@ function PlayState:update(dt)
     self.level:update(dt)
     self.player:update(dt)
 
+    for i = #self.enemies, 1, -1 do
+        local enemy = self.enemies[i]
+        enemy:processAI({level = self.level}, dt)
+           enemy:update(dt)
+
+    end
 
     
     
@@ -77,5 +90,50 @@ function PlayState:render()
     self.level:render()
     self.player:render()
 
+    for k, enemy in pairs(self.enemies) do
+        enemy:render(self.adjacentOffsetX, self.adjacentOffsetY) 
+    end
+    
+
+
+
 
 end
+
+
+function PlayState:spawnEnemies()
+   --[[  local types = {'skeleton', 'slime', 'bat', 'ghost', 'spider'}
+
+    for i = 1, 10 do
+        local type = types[math.random(#types)] ]]
+        local cat
+        cat =  Entity {
+            animations = ENTITY_DEFS['pink-kitty'].animations,
+            walkSpeed = MONSTER_WALK_SPEED,
+            level = self.level,
+            tiles = self.tiles,
+            type = "monster",
+
+            -- always spawn in top corners
+            x = 368,
+            y = 0 ,
+
+           
+            width = ENTITY_DEFS['pink-kitty'].width,
+            height = ENTITY_DEFS['pink-kitty'].height,
+           
+
+        }
+
+       cat.stateMachine = StateMachine {
+            ['walk'] = function() return EntityWalkState(cat, self.level) end,
+            ['idle'] = function() return EntityIdleState(cat) end
+        }
+
+        cat:changeState('idle')
+    
+        table.insert(self.enemies, cat)
+
+       
+        
+    end

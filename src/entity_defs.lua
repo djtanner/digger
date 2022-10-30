@@ -4,6 +4,8 @@ ENTITY_DEFS = {
         type = "player",
         width = 16,
         height = 16,
+        offsetX = 16,
+        offsetY = 16,
         animations = {
             ['walk-left'] = {
                 frames = {5,6},
@@ -40,6 +42,50 @@ ENTITY_DEFS = {
             ['idle-up'] = {
                 frames = {5},
                 texture = 'character-idle'
+            }
+        }
+    },
+    ['pink-kitty'] = {
+        walkSpeed = MONSTER_WALK_SPEED,
+        type = "monster",
+        width = 16,
+        height = 16,
+        animations = {
+            ['walk-left'] = {
+                frames = {25,26,27,28},
+                interval = 0.15,
+                texture = 'pink-cat'
+            },
+            ['walk-right'] = {
+                frames = {37, 38,39,40},
+                interval = 0.15,
+                texture = 'pink-cat'
+            },
+            ['walk-down'] = {
+                frames = {29,30,31,32},
+                interval = 0.15,
+                texture = 'pink-cat'
+            },
+            ['walk-up'] = {
+                frames = {45,46,47,48},
+                interval = 0.15,
+                texture = 'pink-cat'
+            },
+            ['idle-left'] = {
+                frames = {9},
+                texture = 'pink-cat'
+            },
+            ['idle-right'] = {
+                frames = {37},
+                texture = 'pink-cat'
+            },
+            ['idle-down'] = {
+                frames = {29},
+                texture = 'pink-cat'
+            },
+            ['idle-up'] = {
+                frames = {45},
+                texture = 'pink-cat'
             }
         }
     }

@@ -3,6 +3,8 @@ require 'src/Dependencies'
 
 function love.load()
     math.randomseed(os.time())
+    
+    math.random(); math.random(); math.random()
     love.window.setTitle('Digger')
     love.graphics.setDefaultFilter('nearest', 'nearest')
 

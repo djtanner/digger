@@ -45,6 +45,7 @@ gTextures = {
     ['strawberry'] = love.graphics.newImage('graphics/Strawberry.png'),
     ['character-walk'] = love.graphics.newImage('graphics/character_walk.png'),
     ['character-idle'] = love.graphics.newImage('graphics/character_idle.png'),
+    ['pink-cat'] = love.graphics.newImage('graphics/pink_cat.png'),
 }
 
 
@@ -59,4 +60,5 @@ gFrames = {
     ['strawberry'] = GenerateQuads(gTextures['strawberry'], 32, 32),
     ['character-walk'] = GenerateQuads(gTextures['character-walk'], 48, 48),
     ['character-idle'] = GenerateQuads(gTextures['character-idle'], 48, 48),
+    ['pink-cat'] = GenerateQuads(gTextures['pink-cat'], 32, 32),
 }

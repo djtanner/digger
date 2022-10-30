@@ -19,6 +19,16 @@ function GameLevel:update(dt)
 end
 
 
+function GameLevel:pointToTile(x, y)
+    
+    if x < 0 or x > 24 * TILE_SIZE or y < 0 or y > 14 * TILE_SIZE then
+        return nil
+    end
+    
+    return self.tiles[math.floor(y / TILE_SIZE) + 1][math.floor(x / TILE_SIZE) + 1]
+end
+
+
 function GameLevel:render()
     for y = 1, #self.tiles do
 
