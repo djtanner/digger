@@ -88,5 +88,50 @@ ENTITY_DEFS = {
                 texture = 'pink-cat'
             }
         }
+    },
+    ['slime'] = {
+        walkSpeed = MONSTER_WALK_SPEED,
+        type = "monster",
+        width = 16,
+        height = 16,
+        animations = {
+            ['walk-left'] = {
+                frames = {25,26,27,28},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['walk-right'] = {
+                frames = {37, 38,39,40},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['walk-down'] = {
+                frames = {29,30,31,32},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['walk-up'] = {
+                frames = {45,46,47,48},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['idle-left'] = {
+                frames = {9},
+                texture = 'slime'
+            },
+            ['idle-right'] = {
+                frames = {37},
+                texture = 'slime'
+            },
+            ['idle-down'] = {
+                frames = {29},
+                texture = 'slime'
+            },
+            ['idle-up'] = {
+                frames = {45},
+                texture = 'slime'
+            }
+        }
     }
+
 }
