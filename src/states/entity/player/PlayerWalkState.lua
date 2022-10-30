@@ -15,8 +15,8 @@ function PlayerWalkState:init(player, level)
     
 
     -- render offset for spaced character sprite; negated in render function of state
-    self.entity.offsetY = 16
-    self.entity.offsetX = 16
+  self.entity.offsetY = 16
+  self.entity.offsetX = 16
 end
 
 function PlayerWalkState:update(dt)
@@ -43,8 +43,8 @@ function PlayerWalkState:update(dt)
 
     -- if walking on a grass tile, change it to dirt
     for k,tile in pairs(self.level.tiles) do
-        local checkTileX = math.floor(self.entity.x / TILE_SIZE + 2)
-        local checkTileY = math.floor(self.entity.y / TILE_SIZE + 2)
+        local checkTileX = math.floor(self.entity.x / TILE_SIZE + 1)
+        local checkTileY = math.floor(self.entity.y / TILE_SIZE + 1)
 
 
    --[[      print("tileX", checkTileX)
