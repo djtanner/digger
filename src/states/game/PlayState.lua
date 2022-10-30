@@ -77,7 +77,7 @@ function PlayState:update(dt)
             enemy:update(dt)
 
     end
-    
+
     
     
 end
@@ -116,7 +116,10 @@ function PlayState:spawnEnemies()
 
             -- always spawn in top corner
             x = 355,
-            y = 0 - TILE_SIZE/2,
+            y = 0 - TILE_SIZE/2, 
+
+            --[[ x = 200,
+            y = 100, ]]
             width = ENTITY_DEFS['pink-kitty'].width,
             height = ENTITY_DEFS['pink-kitty'].height,
            

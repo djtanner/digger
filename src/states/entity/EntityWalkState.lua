@@ -31,61 +31,91 @@ function EntityWalkState:update(dt)
     if self.entity.direction == 'left' then
         self.entity.x = self.entity.x - self.entity.walkSpeed * dt
         
-        if self.entity.x <=  0 - TILE_SIZE then 
-            self.entity.x =  0 - TILE_SIZE
+        if self.entity.x <=  0  then 
+            self.entity.x =  0 
             self.bumped = true
         end
     elseif self.entity.direction == 'right' then
         self.entity.x = self.entity.x + self.entity.walkSpeed * dt
 
-        if self.entity.x  >= VIRTUAL_WIDTH + TILE_SIZE - self.entity.width  then
-            self.entity.x = VIRTUAL_WIDTH + TILE_SIZE - self.entity.width
+        if self.entity.x  >= VIRTUAL_WIDTH - TILE_SIZE   then
+            self.entity.x = VIRTUAL_WIDTH - TILE_SIZE - self.entity.width
             self.bumped = true
         end
     elseif self.entity.direction == 'up' then
         self.entity.y = self.entity.y - self.entity.walkSpeed * dt
 
-            if self.entity.y <=  -TILE_SIZE then 
-                self.entity.y =  -TILE_SIZE
+                if self.entity.y <=  0 then 
+                    self.entity.y =  0
 
             self.bumped = true
         end
     elseif self.entity.direction == 'down' then
         self.entity.y = self.entity.y + self.entity.walkSpeed * dt
 
-             local bottomEdge = VIRTUAL_HEIGHT + TILE_SIZE
+             local bottomEdge = VIRTUAL_HEIGHT 
 
         if self.entity.y + self.entity.height >= bottomEdge then
             self.entity.y = bottomEdge - self.entity.height
             self.bumped = true
         end
     end
+
+
 end
+
+
 
 function EntityWalkState:processAI(params, dt)
     local level = params.level
     local directions = {'left', 'right', 'up', 'down'}
 
+    local tileLeft = level:pointToTile(self.entity.x, self.entity.y)
+    local tileDown = level:pointToTile(self.entity.x+self.entity.width, self.entity.y - 2*TILE_SIZE)
+    if tileLeft then
+    print(tileLeft.color)
+    end
+
+       -- only allow walking on dirt tiles
+       --if self.direction == 'down' then
+        if tileLeft and tileLeft.color == 1 then
+            self.entity.direction = 'left'
+            self.entity:changeAnimation('walk-left')
+            print("changed directions to left")  
+           
+        elseif tileDown and tileDown.color == 1 then
+        -- check the tile below
+            self.entity.direction = 'down'
+            self.entity:changeAnimation('walk-down')
+            print("changed directions down")  
+        
+    end
+   
+
     if self.moveDuration == 0 or self.bumped then
         
         -- set an initial move duration and direction
         self.moveDuration = math.random(5)
-        self.entity.direction = directions[math.random(#directions)]
-        self.entity:changeAnimation('walk-' .. tostring(self.entity.direction))
+        --[[ self.entity.direction = directions[math.random(#directions)]
+        self.entity:changeAnimation('walk-' .. tostring(self.entity.direction)) ]]
+   
     elseif self.movementTimer > self.moveDuration then
         self.movementTimer = 0
+    
 
         -- chance to go idle
         if math.random(3) == 1 then
             self.entity:changeState('idle')
         else
             self.moveDuration = math.random(5)
-            self.entity.direction = directions[math.random(#directions)]
-            self.entity:changeAnimation('walk-' .. tostring(self.entity.direction))
+            --[[ self.entity.direction = directions[math.random(#directions)]
+            self.entity:changeAnimation('walk-' .. tostring(self.entity.direction)) ]]
         end
     end
 
     self.movementTimer = self.movementTimer + dt
+
+   
 end
 
 function EntityWalkState:render()

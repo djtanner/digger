@@ -21,6 +21,7 @@ function Tile:render()
  
     love.graphics.setColor(255, 255, 255, 255)
     love.graphics.draw(gTextures['grass'], gFrames['tiles'][self.color],
-    (self.x - 1) * TILE_SIZE, (self.y - 1) * TILE_SIZE)
+    (self.x - 1) * TILE_SIZE, (self.y - 1) * TILE_SIZE) 
+  
 
 end
