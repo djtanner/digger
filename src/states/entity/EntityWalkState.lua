@@ -170,7 +170,7 @@ function EntityWalkState:processAI(params, dt)
         --top row - sometimes move down or continue  
     elseif self.entity.direction == 'right' and self.entity.x > 20 and self.entity.y == 0 and tileDown and tileDown.color == 1 then
             
-        if math.random(5) == 5 then 
+        if math.random(8) == 1 then 
         self.entity.direction = 'down'
         self.entity:changeAnimation('walk-down')
         print('random down from top row')
@@ -190,7 +190,7 @@ function EntityWalkState:processAI(params, dt)
             print('hit bottom wall')
 
 
-        elseif self.entity.direction == 'up'  and tileUp and tileUp.color == 2 and tileLeft and tileLeft.color == 1 and self.entity.x > 16 then
+        elseif self.entity.direction == 'up' and tileUp and tileUp.color == 2 and tileLeft and tileLeft.color == 1 and self.entity.x > 16 then
             self.entity.direction = 'left'
             self.entity: changeAnimation('walk-left')
             print('move left if top is grass')
@@ -200,18 +200,18 @@ function EntityWalkState:processAI(params, dt)
             self.entity: changeAnimation('walk-down')
             print('backtrack if top and left is grass')
 
-        
-        --[[ elseif self.entity.direction == 'left' and tileUp and tileUp.color == 1 and self.entity.y <= 208 then
-            if math.random(5) > 3 then
+
+        -- if moving down and grass 
+        elseif self.entity.direction == 'down' and tileDown and tileDown.color == 2 then
             self.entity.direction = 'up'
             self.entity: changeAnimation('walk-up')
-            print('move up random')
-            end ]]
+            print('move up when hit grass')
+            
 
-        elseif (self.entity.direction == 'right' or self.entity.direction == 'left') and tileUp and tileUp.color == 2 and tileLeft and tileLeft.color == 1 and self.entity.x > 0 then
+       --[[  elseif (self.entity.direction == 'right' or self.entity.direction == 'left') and tileUp and tileUp.color == 2 and tileLeft and tileLeft.color == 1 and self.entity.x > 0 then
             self.entity.direction = 'left'
             self.entity: changeAnimation('walk-left')
-            print('move left if top is grass')
+            print('move left if top is grass') ]]
             
         
 --[[         elseif tileLeft and tileLeft.color == 1 then
