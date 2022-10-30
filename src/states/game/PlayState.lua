@@ -114,12 +114,11 @@ function PlayState:spawnEnemies()
             tiles = self.tiles,
             type = "monster",
 
-            -- always spawn in top corner
-           --[[  x = 368,
-            y = 0 , ]] 
+            -- always spawn in top corners
+            x = 368,
+            y = 0 ,
 
-            x = 200,
-            y = 100, 
+           
             width = ENTITY_DEFS['pink-kitty'].width,
             height = ENTITY_DEFS['pink-kitty'].height,
            
@@ -135,6 +134,6 @@ function PlayState:spawnEnemies()
     
         table.insert(self.enemies, cat)
 
-        
+       
         
     end
