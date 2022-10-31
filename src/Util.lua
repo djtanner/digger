@@ -37,37 +37,6 @@ function GenerateQuads(atlas, tilewidth, tileheight)
 end
 
 
-function GenerateSlimeQuads(atlas)
-    local slimes = {}
-
-    local x = 0
-    local y = 0
-
-    local counter = 1
-
-    -- 9 rows of tiles
-    for row = 1, 8 do
-        
-        -- four sets of 4 cols, different tile varietes
-        for i = 1, 4 do
-            slimes[counter] = {}
-            
-            for col = 1, 4 do
-                table.insert(slimes[counter], love.graphics.newQuad(
-                    x, y, 48, 48, atlas:getDimensions()
-                ))
-                x = x + 48
-            end
-
-            counter = counter + 1
-        end
-        y = y + 48
-        x = 0
-    end
-
-    return slimes
-end
-
 --[[
     Recursive table printing function.
     https://coronalabs.com/blog/2014/09/02/tutorial-printing-table-contents/

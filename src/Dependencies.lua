@@ -25,6 +25,7 @@ require 'src/states/entity/EntityIdleState'
 require 'src/states/entity/EntityWalkState'
 require 'src/states/entity/player/PlayerIdleState'
 require 'src/states/entity/player/PlayerWalkState'
+require 'src/states/entity/SlimeWalkState'
 
 
 
@@ -62,5 +63,5 @@ gFrames = {
     ['character-walk'] = GenerateQuads(gTextures['character-walk'], 48, 48),
     ['character-idle'] = GenerateQuads(gTextures['character-idle'], 48, 48),
     ['pink-cat'] = GenerateQuads(gTextures['pink-cat'], 32, 32),
-    ['slimes'] = GenerateSlimeQuads(gTextures['slime'], 48, 48),
+    ['slime'] = GenerateQuads(gTextures['slime'], 48, 48),
 }

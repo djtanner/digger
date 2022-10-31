@@ -134,6 +134,31 @@ function PlayState:spawnEnemies()
     
         table.insert(self.enemies, cat)
 
-       
+       for i = 1,10 do 
+        local slime
+        slime =  Entity {
+            animations = ENTITY_DEFS['green-slime'].animations,
+            walkSpeed = MONSTER_WALK_SPEED,
+            level = self.level,
+            tiles = self.tiles,
+            type = "monster",
+
+            -- always spawn in top corners
+            x = 0,
+            y = 0 ,
+            width = 16,
+            height = 16,
+           
+        }
+
+       slime.stateMachine = StateMachine {
+            ['walk'] = function() return SlimeWalkState(slime, self.level) end,
+            ['idle'] = function() return EntityIdleState(slime) end
+        }
+
+        slime:changeState('walk')
+    
+        table.insert(self.enemies, slime)
+    end
         
     end
