@@ -31,29 +31,29 @@ function SlimeWalkState:update(dt)
     if self.entity.direction == 'left' then
         self.entity.x = self.entity.x - self.entity.walkSpeed * dt
         
-        if self.entity.x <=  TILE_SIZE then 
-            self.entity.x = TILE_SIZE
+        if self.entity.x <=  0  then 
+            self.entity.x =  0 
             self.bumped = true
         end
     elseif self.entity.direction == 'right' then
         self.entity.x = self.entity.x + self.entity.walkSpeed * dt
 
-        if self.entity.x + self.entity.width >= VIRTUAL_WIDTH - TILE_SIZE * 2 then
-            self.entity.x = VIRTUAL_WIDTH - TILE_SIZE * 2 - self.entity.width
+        if self.entity.x  >= VIRTUAL_WIDTH - TILE_SIZE   then
+            self.entity.x = VIRTUAL_WIDTH - TILE_SIZE 
             self.bumped = true
         end
     elseif self.entity.direction == 'up' then
         self.entity.y = self.entity.y - self.entity.walkSpeed * dt
 
-        if self.entity.y <=  TILE_SIZE - self.entity.height / 2 then 
-            self.entity.y = TILE_SIZE - self.entity.height / 2
+                if self.entity.y <=  0 then 
+                    self.entity.y =  0
+
             self.bumped = true
         end
     elseif self.entity.direction == 'down' then
         self.entity.y = self.entity.y + self.entity.walkSpeed * dt
 
-        local bottomEdge = VIRTUAL_HEIGHT - (VIRTUAL_HEIGHT - MAP_HEIGHT * TILE_SIZE) 
-             - TILE_SIZE
+             local bottomEdge = VIRTUAL_HEIGHT 
 
         if self.entity.y + self.entity.height >= bottomEdge then
             self.entity.y = bottomEdge - self.entity.height

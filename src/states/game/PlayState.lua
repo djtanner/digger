@@ -133,21 +133,27 @@ function PlayState:spawnEnemies()
         cat:changeState('idle')
     
         table.insert(self.enemies, cat)
+        
+        local types = {'green-slime', 'blue-slime', 'orange-slime', 'pink-slime', 'yellow-slime'}
 
-       for i = 1,10 do 
+       for i = 1, 10 do 
+
+        local slime_type = types[math.random(#types)]
+        print(slime_type)
         local slime
+        
         slime =  Entity {
-            animations = ENTITY_DEFS['green-slime'].animations,
-            walkSpeed = MONSTER_WALK_SPEED,
+            animations = ENTITY_DEFS[slime_type].animations,
+            walkSpeed = SLIME_WALK_SPEED,
             level = self.level,
             tiles = self.tiles,
-            type = "monster",
-
+            type = 'monster',
+            
             -- always spawn in top corners
             x = 0,
             y = 0 ,
-            width = 16,
-            height = 16,
+            width = ENTITY_DEFS[slime_type].width,
+            height = ENTITY_DEFS[slime_type].height
            
         }
 

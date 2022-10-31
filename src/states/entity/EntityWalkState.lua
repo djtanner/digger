@@ -81,8 +81,8 @@ function EntityWalkState:processAI(params, dt)
     local tileDown = level:pointToTile(self.entity.x + self.entity.width/2, self.entity.y + self.entity.height)
     local tileUp = level:pointToTile(self.entity.x + self.entity.width, self.entity.y - TILE_SIZE)
     
-    print("x", math.floor(self.entity.x))
-    print("y", math.floor(self.entity.y))
+   -- print("x", math.floor(self.entity.x))
+   -- print("y", math.floor(self.entity.y))
     
     
 -- only allow walking on dirt tiles for cat
