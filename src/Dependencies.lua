@@ -65,3 +65,10 @@ gFrames = {
     ['pink-cat'] = GenerateQuads(gTextures['pink-cat'], 32, 32),
     ['slime'] = GenerateQuads(gTextures['slime'], 48, 48),
 }
+
+gFonts = {
+    ['small'] = love.graphics.newFont('fonts/font.ttf', 8),
+    ['medium'] = love.graphics.newFont('fonts/font.ttf', 16),
+    ['large'] = love.graphics.newFont('fonts/font.ttf', 32),
+    ['title'] = love.graphics.newFont('fonts/ArcadeAlternate.ttf', 32)
+}

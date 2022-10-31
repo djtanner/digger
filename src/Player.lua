@@ -11,6 +11,8 @@ Player = Class{__includes = Entity}
 
 function Player:init(def)
     Entity.init(self, def)
+    self.score = 0
+    self.levelNumber = 1
 end
 
 function Player:update(dt)

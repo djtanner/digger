@@ -95,7 +95,7 @@ end
 
 function PlayState:render()
     love.graphics.setColor(175/255, 53/255, 42/255, 1)
-    love.graphics.printf('Digger', 0, VIRTUAL_HEIGHT / 2 - 32, VIRTUAL_WIDTH, 'center')
+    
     
     self.level:render()
     self.player:render()
@@ -105,8 +105,20 @@ function PlayState:render()
     end
     
 
+       -- render score
+       love.graphics.setFont(gFonts['medium'])
+       love.graphics.setColor(0, 0, 0, 1)
+       love.graphics.print(tostring(self.player.score), 5, 5)
+       love.graphics.setColor(1, 1, 1, 1)
+       love.graphics.print(tostring(self.player.score), 4, 4)
 
-
+        -- render level
+        love.graphics.setColor(0, 0, 0, 1)
+        love.graphics.print("Level", VIRTUAL_WIDTH - 60, 5)
+        love.graphics.print(tostring(self.player.levelNumber), VIRTUAL_WIDTH - 10, 5)
+        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.print("Level", VIRTUAL_WIDTH - 60, 4)
+        love.graphics.print(tostring(self.player.levelNumber), VIRTUAL_WIDTH - 10, 4)
 
 end
 
