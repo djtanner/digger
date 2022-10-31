@@ -329,7 +329,104 @@ ENTITY_DEFS = {
                 texture = 'slime'
             }
         }
+    },
+    ['silver-slime'] = {
+        walkSpeed = SLIME_WALK_SPEED,
+        type = "monster",
+        width = 48,
+        height = 48,
+        animations = {
+            ['walk-left'] = {
+                frames = {64,65,66},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['walk-right'] = {
+                frames = {76,77,78},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['walk-down'] = {
+                frames = {88,89,90},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['walk-up'] = {
+                frames = {52,53,54},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['idle-left'] = {
+                frames = {64,65},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['idle-right'] = {
+                frames = {76,77},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['idle-down'] = {
+                frames = {88,89},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['idle-up'] = {
+                frames = {52,53},
+                interval = 0.15,
+                texture = 'slime'
+            }
+        }
+    },
+    ['grey-slime'] = {
+        walkSpeed = SLIME_WALK_SPEED,
+        type = "monster",
+        width = 48,
+        height = 48,
+        animations = {
+            ['walk-left'] = {
+                frames = {67,68,69},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['walk-right'] = {
+                frames = {79,80,81},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['walk-down'] = {
+                frames = {91,92,93},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['walk-up'] = {
+                frames = {55,56,57},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['idle-left'] = {
+                frames = {67,68},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['idle-right'] = {
+                frames = {79,80},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['idle-down'] = {
+                frames = {91,92},
+                interval = 0.15,
+                texture = 'slime'
+            },
+            ['idle-up'] = {
+                frames = {55,56},
+                interval = 0.15,
+                texture = 'slime'
+            }
+        }
     }
+
 
 
 }

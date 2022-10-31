@@ -78,6 +78,16 @@ function PlayState:update(dt)
 
     end
 
+    for k,monster in pairs(self.enemies) do
+        if self.player:collides(monster) then
+            
+            print("gameover")   
+                
+            
+        end
+        
+    end 
+
     
     
 end
@@ -134,12 +144,12 @@ function PlayState:spawnEnemies()
     
         table.insert(self.enemies, cat)
         
-        local types = {'green-slime', 'blue-slime', 'orange-slime', 'pink-slime', 'yellow-slime'}
+        local types = {'green-slime', 'blue-slime', 'orange-slime', 'pink-slime', 'yellow-slime', 'silver-slime', 'grey-slime'}
 
        for i = 1, 10 do 
 
         local slime_type = types[math.random(#types)]
-        print(slime_type)
+        
         local slime
         
         slime =  Entity {
@@ -167,4 +177,10 @@ function PlayState:spawnEnemies()
         table.insert(self.enemies, slime)
     end
         
+
+
+
+
+
+
     end
