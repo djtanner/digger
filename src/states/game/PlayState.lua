@@ -78,6 +78,16 @@ function PlayState:update(dt)
 
     end
 
+    for k,monster in pairs(self.enemies) do
+        if self.player:collides(monster) then
+            
+            print("gameover")   
+                
+            
+        end
+        
+    end 
+
     
     
 end
@@ -133,7 +143,44 @@ function PlayState:spawnEnemies()
         cat:changeState('idle')
     
         table.insert(self.enemies, cat)
-
-       
         
+        local types = {'green-slime', 'blue-slime', 'orange-slime', 'pink-slime', 'yellow-slime', 'silver-slime', 'grey-slime'}
+
+       for i = 1, 10 do 
+
+        local slime_type = types[math.random(#types)]
+        
+        local slime
+        
+        slime =  Entity {
+            animations = ENTITY_DEFS[slime_type].animations,
+            walkSpeed = SLIME_WALK_SPEED,
+            level = self.level,
+            tiles = self.tiles,
+            type = 'monster',
+            
+            -- always spawn in top corners
+            x = 0,
+            y = 0 ,
+            width = ENTITY_DEFS[slime_type].width,
+            height = ENTITY_DEFS[slime_type].height
+           
+        }
+
+       slime.stateMachine = StateMachine {
+            ['walk'] = function() return SlimeWalkState(slime, self.level) end,
+            ['idle'] = function() return EntityIdleState(slime) end
+        }
+
+        slime:changeState('walk')
+    
+        table.insert(self.enemies, slime)
+    end
+        
+
+
+
+
+
+
     end

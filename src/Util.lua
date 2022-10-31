@@ -9,7 +9,7 @@ Code reused from:
     Author: Colton Ogden
     cogden@cs50.harvard.edu
 
-    Helper functions for writing Match-3.
+   
 ]]
 
 --[[
@@ -35,6 +35,7 @@ function GenerateQuads(atlas, tilewidth, tileheight)
 
     return spritesheet
 end
+
 
 --[[
     Recursive table printing function.
