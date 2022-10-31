@@ -54,6 +54,10 @@ function PlayState:enter(params)
 
     self:spawnEnemies()
 
+    self.player.score = params.score
+
+    self.player.levelNumber = params.levelNumber
+
 end
     
 
@@ -87,6 +91,8 @@ function PlayState:update(dt)
         end
         
     end 
+
+    
 
     
     

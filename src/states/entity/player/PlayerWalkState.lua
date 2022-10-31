@@ -62,8 +62,10 @@ function PlayerWalkState:update(dt)
             if self.entity:collides(object) and object.type == "fruit" then
                 
                 if object.isConsumable then
-                    -- TODO - increase score
+                    
                     table.remove(self.level.objects,k)
+                    -- increase the score
+                    object.onConsume()
                 end     
                     
                 end
