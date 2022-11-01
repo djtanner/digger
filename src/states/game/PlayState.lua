@@ -206,7 +206,9 @@ function PlayState:spawnEnemies(levelNumber)
             x = 0,
             y = 0 ,
             width = ENTITY_DEFS[slime_type].width,
-            height = ENTITY_DEFS[slime_type].height
+            height = ENTITY_DEFS[slime_type].height,
+            offsetX = 16,
+            offsetY = 32
            
         }
 
