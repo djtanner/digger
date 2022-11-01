@@ -1,6 +1,6 @@
 LevelMaker = Class{}
 
-function LevelMaker.generate()
+function LevelMaker.generate(levelNumber)
 
     local tiles = {}
     local objects = {}
@@ -76,10 +76,29 @@ function LevelMaker.generate()
     end
 
     -- Add some fruit to the level
-    local types = {'apple', 'banana','cherry','melon','kiwi','pineapple','strawberry'}
+   -- local types = {'apple', 'banana','cherry','melon','kiwi','pineapple','strawberry'}
+    local types1 = {'apple', 'banana'}
+    local types2 = {'cherry','melon'}
+    local types3 = {'kiwi','pineapple'}
+    local types4 = {'strawberry', 'banana'}
+
+    local levelType
+
+    if levelNumber == 1 or levelNumber % 5 == 0 then
+         levelType = types1
+
+    elseif levelNumber % 2 == 0 then
+     levelType = types2
+
+    elseif levelNumber % 3 == 0 then
+     levelType = types3
+
+    else levelType = types4
+    end
+
     for i = 1, 8 do
         
-        local type = types[math.random(#types)]
+        local type = levelType[math.random(#levelType)]
 
         local fruit =  GameObject(GAME_OBJECT_DEFS[type],
             math.random(32, VIRTUAL_WIDTH-32),

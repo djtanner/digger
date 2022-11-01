@@ -3,7 +3,7 @@ PlayState = Class{__includes = BaseState}
 function PlayState:init()
 
     self.enemies = {}
-    self.level = LevelMaker.generate()
+    self.level = LevelMaker.generate(1)
     self.tiles = self.level.tiles
     
     self.player = Player {
@@ -31,7 +31,7 @@ end
 
 function PlayState:enter(params)
     self.enemies = {}
-    self.level = LevelMaker.generate()
+    self.level = LevelMaker.generate(params.levelNumber)
     self.tiles = self.level.tiles
 
     self.player = Player {
@@ -69,7 +69,7 @@ function PlayState:update(dt)
     end
 
     if love.keyboard.wasPressed('space') then
-        self.level = LevelMaker.generate()
+        self.level = LevelMaker.generate(self.player.levelNumber)
     end
 
     self.level:update(dt)
@@ -136,10 +136,7 @@ end
 
 
 function PlayState:spawnEnemies()
-   --[[  local types = {'skeleton', 'slime', 'bat', 'ghost', 'spider'}
-
-    for i = 1, 10 do
-        local type = types[math.random(#types)] ]]
+   
         local cat
         cat =  Entity {
             animations = ENTITY_DEFS['pink-kitty'].animations,
