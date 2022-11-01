@@ -92,6 +92,12 @@ function PlayState:update(dt)
         
     end 
 
+    --Go to next level when eat all the fruit
+    if #self.level.objects == 0 then
+        self.player.levelNumber = self.player.levelNumber + 1
+        self.level = LevelMaker.generate()
+    end
+
     
 
     
