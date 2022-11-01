@@ -94,6 +94,9 @@ function LevelMaker.generate()
         
         objects[i]:changeState('idle')
 
+        objects[i].onConsume = GAME_OBJECT_DEFS[type].onConsume
+        
+
 
         
     end

@@ -11,7 +11,10 @@ GAME_OBJECT_DEFS = {
                 interval = 0.155,
                 texture = 'apple',
                 looping = true
-            }}
+            }},
+            onConsume = function()
+                gStateMachine.current.player.score = gStateMachine.current.player.score + 20 
+            end
         },
         ['banana'] = {
             type = 'fruit',
@@ -25,7 +28,10 @@ GAME_OBJECT_DEFS = {
                     interval = 0.155,
                     texture = 'banana',
                     looping = true
-                }}
+                }},
+                onConsume = function()
+                    gStateMachine.current.player.score = gStateMachine.current.player.score + 30 
+                end
             },
             ['cherry'] = {
                 type = 'fruit',
@@ -39,7 +45,10 @@ GAME_OBJECT_DEFS = {
                         interval = 0.155,
                         texture = 'cherry',
                         looping = true
-                    }}
+                    }},
+                    onConsume = function()
+                        gStateMachine.current.player.score = gStateMachine.current.player.score + 40 
+                    end
                 },
                 ['kiwi'] = {
                     type = 'fruit',
@@ -53,7 +62,10 @@ GAME_OBJECT_DEFS = {
                             interval = 0.155,
                             texture = 'kiwi',
                             looping = true
-                        }}
+                        }},
+                        onConsume = function()
+                            gStateMachine.current.player.score = gStateMachine.current.player.score + 50 
+                        end
                     },
                     ['melon'] = {
                         type = 'fruit',
@@ -67,7 +79,10 @@ GAME_OBJECT_DEFS = {
                                 interval = 0.155,
                                 texture = 'melon',
                                 looping = true
-                            }}
+                            }},
+                            onConsume = function()
+                                gStateMachine.current.player.score = gStateMachine.current.player.score + 20 
+                            end
                         },
                         ['pineapple'] = {
                             type = 'fruit',
@@ -81,7 +96,10 @@ GAME_OBJECT_DEFS = {
                                     interval = 0.155,
                                     texture = 'pineapple',
                                     looping = true
-                                }}
+                                }},
+                                onConsume = function()
+                                    gStateMachine.current.player.score = gStateMachine.current.player.score + 20 
+                                end
                             },
                             ['strawberry'] = {
                                 type = 'fruit',
@@ -95,7 +113,10 @@ GAME_OBJECT_DEFS = {
                                         interval = 0.155,
                                         texture = 'strawberry',
                                         looping = true
-                                    }}
+                                    }},
+                                    onConsume = function()
+                                        gStateMachine.current.player.score = gStateMachine.current.player.score + 30 
+                                    end
                                 },
 
     }
