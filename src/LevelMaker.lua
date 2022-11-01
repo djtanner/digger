@@ -96,7 +96,7 @@ function LevelMaker.generate(levelNumber)
     else levelType = types4
     end
 
-    for i = 1, 8 do
+    for i = 1, (10 + levelNumber)  do
         
         local type = levelType[math.random(#levelType)]
 

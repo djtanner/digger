@@ -189,7 +189,7 @@ function PlayState:spawnEnemies(levelNumber)
        else slimeColor = slime4
        end
        
-        for i = 1, 10 do 
+        for i = 1, (4 + levelNumber) do 
 
         local slime_type = slimeColor[math.random(#slimeColor)]
         
