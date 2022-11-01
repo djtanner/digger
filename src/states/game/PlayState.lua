@@ -25,7 +25,7 @@ function PlayState:init()
     }
     self.player:changeState('idle')
 
-    self:spawnEnemies()
+    self:spawnEnemies(1)
 
 end
 
@@ -52,11 +52,13 @@ function PlayState:enter(params)
     }
     self.player:changeState('idle')
 
-    self:spawnEnemies()
+    
 
     self.player.score = params.score
 
     self.player.levelNumber = params.levelNumber
+
+    self:spawnEnemies(self.player.levelNumber)
 
 end
     
@@ -135,7 +137,7 @@ function PlayState:render()
 end
 
 
-function PlayState:spawnEnemies()
+function PlayState:spawnEnemies(levelNumber)
    
         local cat
         cat =  Entity {
@@ -166,10 +168,30 @@ function PlayState:spawnEnemies()
         table.insert(self.enemies, cat)
         
         local types = {'green-slime', 'blue-slime', 'orange-slime', 'pink-slime', 'yellow-slime', 'silver-slime', 'grey-slime'}
+        local slime1 = {'green-slime', 'pink-slime'}
+        local slime2 = {'blue-slime', 'orange-slime'}
+        local slime3 = {'yellow-slime', 'silver-slime', 'pink-slime'}
+        local slime4 = {'grey-slime'}
 
-       for i = 1, 10 do 
+        local slimeColor
 
-        local slime_type = types[math.random(#types)]
+        
+
+        if levelNumber  == 1 or levelNumber  % 5 == 0 then
+            slimeColor = slime1
+   
+       elseif levelNumber % 2 == 0 then
+        slimeColor = slime2
+   
+       elseif levelNumber  % 3 == 0 then
+        slimeColor = slime3
+   
+       else slimeColor = slime4
+       end
+       
+        for i = 1, 10 do 
+
+        local slime_type = slimeColor[math.random(#slimeColor)]
         
         local slime
         
