@@ -10,6 +10,7 @@ require 'src/game_objects'
 require 'src/StateMachine'
 require 'src/states/BaseState'
 require 'src/states/game/PlayState'
+require 'src/states/game/StartState'
 require 'src/Util'
 require 'src/Tile'
 require 'src/LevelMaker'
@@ -36,6 +37,7 @@ gFonts = {
 }
 
 gTextures = {
+    ['background'] = love.graphics.newImage('graphics/background.png'),
     ['grass'] = love.graphics.newImage('graphics/grasstiles.png'),
     ['apple'] = love.graphics.newImage('graphics/Apple.png'),
     ['banana'] = love.graphics.newImage('graphics/Bananas.png'),
