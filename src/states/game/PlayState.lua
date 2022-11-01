@@ -94,8 +94,8 @@ function PlayState:update(dt)
 
     --Go to next level when eat all the fruit
     if #self.level.objects == 0 then
-        self.player.levelNumber = self.player.levelNumber + 1
-        self.level = LevelMaker.generate()
+
+        gStateMachine:change('play', {levelNumber = self.player.levelNumber + 1, score = self.player.score})
     end
 
     
