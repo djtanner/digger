@@ -86,8 +86,9 @@ function PlayState:update(dt)
 
     for k,monster in pairs(self.enemies) do
         if self.player:collides(monster) then
-            
+            gSounds['death']:play()
             gStateMachine:change('gameover', {levelNumber = self.player.levelNumber, score = self.player.score})  
+            gSounds['music']:stop()
                 
             
         end

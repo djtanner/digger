@@ -84,8 +84,10 @@ gFonts = {
 
 
 -- theme music from https://svl.itch.io/rpg-music-pack-svl
+-- sound effect from https://evilduckk.itch.io/
 
 gSounds = {
     ['music'] = love.audio.newSource('sounds/field_theme_1.wav', 'static'),
+    ['death'] = love.audio.newSource('sounds/death.mp3', 'static'),
  
 }
