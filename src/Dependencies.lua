@@ -65,7 +65,7 @@ gFrames = {
     ['character-walk'] = GenerateQuads(gTextures['character-walk'], 48, 48),
     ['character-idle'] = GenerateQuads(gTextures['character-idle'], 48, 48),
     ['pink-cat'] = GenerateQuads(gTextures['pink-cat'], 32, 32),
-    ['slime'] = GenerateQuads(gTextures['slime'], 48, 48),
+    ['slime'] = GenerateQuads(gTextures['slime'], 48, 48.5),
 }
 
 gFonts = {

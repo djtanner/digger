@@ -299,7 +299,7 @@ ENTITY_DEFS = {
                 texture = 'slime'
             },
             ['walk-down'] = {
-                frames = {85,86,87},
+                frames = {49,50,51},
                 interval = 0.15,
                 texture = 'slime'
             },
@@ -319,7 +319,7 @@ ENTITY_DEFS = {
                 texture = 'slime'
             },
             ['idle-down'] = {
-                frames = {85,86},
+                frames = {49,50},
                 interval = 0.15,
                 texture = 'slime'
             },
@@ -347,7 +347,7 @@ ENTITY_DEFS = {
                 texture = 'slime'
             },
             ['walk-down'] = {
-                frames = {88,89,90},
+                frames = {52,53,54},
                 interval = 0.15,
                 texture = 'slime'
             },
@@ -367,7 +367,7 @@ ENTITY_DEFS = {
                 texture = 'slime'
             },
             ['idle-down'] = {
-                frames = {88,89},
+                frames = {52,53},
                 interval = 0.15,
                 texture = 'slime'
             },
@@ -395,7 +395,7 @@ ENTITY_DEFS = {
                 texture = 'slime'
             },
             ['walk-down'] = {
-                frames = {91,92,93},
+                frames = {55,56,57},
                 interval = 0.15,
                 texture = 'slime'
             },
@@ -415,7 +415,7 @@ ENTITY_DEFS = {
                 texture = 'slime'
             },
             ['idle-down'] = {
-                frames = {91,92},
+                frames = {55,56},
                 interval = 0.15,
                 texture = 'slime'
             },
