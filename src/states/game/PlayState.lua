@@ -159,7 +159,7 @@ function PlayState:spawnEnemies(levelNumber)
         }
 
        cat.stateMachine = StateMachine {
-            ['walk'] = function() return EntityWalkState(cat, self.level) end,
+            ['walk'] = function() return EntityWalkState(cat, self.level, self.player) end,
             ['idle'] = function() return EntityIdleState(cat) end
         }
 

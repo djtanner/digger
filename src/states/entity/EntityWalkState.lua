@@ -8,11 +8,12 @@
 
 EntityWalkState = Class{__includes = BaseState}
 
-function EntityWalkState:init(entity, level)
+function EntityWalkState:init(entity, level, player)
     self.entity = entity
     self.entity:changeAnimation('walk-down')
 
     self.level = level
+    self.player = player
 
     -- used for AI control
     self.moveDuration = 0
@@ -80,6 +81,7 @@ function EntityWalkState:processAI(params, dt)
     local tileLeft = level:pointToTile(self.entity.x, self.entity.y)
     local tileDown = level:pointToTile(self.entity.x + self.entity.width/2, self.entity.y + self.entity.height)
     local tileUp = level:pointToTile(self.entity.x + self.entity.width, self.entity.y - TILE_SIZE)
+
     
    -- print("x", math.floor(self.entity.x))
    -- print("y", math.floor(self.entity.y))
@@ -87,12 +89,19 @@ function EntityWalkState:processAI(params, dt)
     
 -- only allow walking on dirt tiles for cat
 
+
         -- hit the  bottom right corner
         if self.entity.x >= 345 and self.entity.y == 208 then
                 
                     self.entity.direction = 'left'
                     self.entity:changeAnimation('walk-left')
                     print("changed directions left") 
+        
+        -- cat should chase the player if on left side
+        elseif self.entity.x > self.player.x and self.entity.x - self.player.x < 5 * TILE_SIZE and self.player.direction == 'left' and tileLeft and tileLeft.color == 1 then
+            self.entity.direction = 'left'
+            self.entity:changeAnimation('walk-left')
+            print('chase player')
 
 
         -- hit the bottom left corner
