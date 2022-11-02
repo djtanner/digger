@@ -104,6 +104,13 @@ function EntityWalkState:processAI(params, dt)
             print('chase player up')
 
         
+               -- cat should chase the player if below
+        elseif self.entity.y < self.player.y and self.player.y - self.entity.y < 5 * TILE_SIZE and tileDown and tileDown.color == 1 and math.abs(self.entity.x - self.player.x) < TILE_SIZE  then
+            self.entity.direction = 'down'
+            self.entity:changeAnimation('walk-down')
+            print('chase player down')
+
+        
              -- cat should chase the player if on left side
             elseif self.entity.x > self.player.x and self.entity.x - self.player.x < 5 * TILE_SIZE and self.player.direction == 'left' and tileLeft and tileLeft.color == 1 then
                 self.entity.direction = 'left'
