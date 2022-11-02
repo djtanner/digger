@@ -1,3 +1,9 @@
+--[[ Graphics assets credits :
+https://pixelfrog-assets.itch.io/pixel-adventure-1
+https://cupnooble.itch.io/sprout-lands-asset-pack
+https://pop-shop-packs.itch.io/cats-pixel-asset-pack ]]
+
+
 Class = require 'lib/class'
 Event = require 'lib/knife.event'
 push = require 'lib/push'
@@ -11,6 +17,7 @@ require 'src/StateMachine'
 require 'src/states/BaseState'
 require 'src/states/game/PlayState'
 require 'src/states/game/StartState'
+require 'src/states/game/GameOverState'
 require 'src/Util'
 require 'src/Tile'
 require 'src/LevelMaker'
@@ -73,4 +80,12 @@ gFonts = {
     ['medium'] = love.graphics.newFont('fonts/font.ttf', 16),
     ['large'] = love.graphics.newFont('fonts/font.ttf', 32),
     ['title'] = love.graphics.newFont('fonts/ArcadeAlternate.ttf', 32)
+}
+
+
+-- theme music from https://svl.itch.io/rpg-music-pack-svl
+
+gSounds = {
+    ['music'] = love.audio.newSource('sounds/field_theme_1.wav', 'static'),
+ 
 }

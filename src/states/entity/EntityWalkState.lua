@@ -206,7 +206,13 @@ function EntityWalkState:processAI(params, dt)
             self.entity.direction = 'up'
             self.entity: changeAnimation('walk-up')
             print('move up when hit grass')
-            
+        
+        --[[ elseif self.entity.direction == 'down' and self.entity.y > TILE_SIZE and tileLeft and tileLeft.color == 1 then
+            if math.random(5) == 1 then
+            self.entity.direction = 'left'
+            self.entity: changeAnimation('walk-left')
+            print('move left when walking down')
+            end ]]
 
        --[[  elseif (self.entity.direction == 'right' or self.entity.direction == 'left') and tileUp and tileUp.color == 2 and tileLeft and tileLeft.color == 1 and self.entity.x > 0 then
             self.entity.direction = 'left'

@@ -1,7 +1,7 @@
 GameLevel = Class{}
 
 function GameLevel:init(tiles, objects)
-   -- self.entities = entities
+   
     self.objects = objects
     self.tiles = tiles
     

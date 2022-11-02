@@ -87,7 +87,7 @@ function PlayState:update(dt)
     for k,monster in pairs(self.enemies) do
         if self.player:collides(monster) then
             
-            print("gameover")   
+            gStateMachine:change('gameover', {levelNumber = self.player.levelNumber, score = self.player.score})  
                 
             
         end

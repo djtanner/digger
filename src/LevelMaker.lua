@@ -64,8 +64,8 @@ function LevelMaker.generate(levelNumber)
         numSpacesMove = math.random(1,23)
 
         for i = 1, numSpacesMove do
-        mazeX = math.min(math.max(mazeX + xDirection, 1), 22)
-        mazeY = math.min(math.max(mazeY + yDirection, 1), 22)            
+        mazeX = math.min(math.max(mazeX + xDirection, 1), 23)
+        mazeY = math.min(math.max(mazeY + yDirection, 1), 23)            
    
             if (tiles[mazeX][mazeY].color == 2) then
                tiles[mazeX][mazeY].color = 1

@@ -19,12 +19,13 @@ function love.load()
     gStateMachine = StateMachine {
         ['start'] = function() return StartState() end,
         ['play'] = function() return PlayState() end,
-      --  ['game-over'] = function() return GameOverState() end
+        ['gameover'] = function() return GameOverState() end
+      
     }
-   -- gStateMachine:change('play', {levelNumber = 1, score = 0})
+   
    gStateMachine:change('start')
-   -- gSounds['music']:setLooping(true)
-   -- gSounds['music']:play()
+    gSounds['music']:setLooping(true)
+    gSounds['music']:play()
 
     love.keyboard.keysPressed = {}
 

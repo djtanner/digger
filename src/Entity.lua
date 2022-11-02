@@ -1,4 +1,6 @@
---[[Code partially reused from:
+--[[
+    Some code partially reused from:
+    
     GD50
     Legend of Zelda
 
