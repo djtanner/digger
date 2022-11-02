@@ -202,8 +202,8 @@ function PlayState:spawnEnemies(levelNumber)
             tiles = self.tiles,
             type = 'monster',
             
-            -- always spawn in top corners
-            x = 0,
+            -- always spawn in top middle
+            x = VIRTUAL_WIDTH / 2,
             y = 0 ,
             width = ENTITY_DEFS[slime_type].width,
             height = ENTITY_DEFS[slime_type].height,

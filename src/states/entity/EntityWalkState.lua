@@ -97,11 +97,18 @@ function EntityWalkState:processAI(params, dt)
                     self.entity:changeAnimation('walk-left')
                     print("changed directions left") 
         
-        -- cat should chase the player if on left side
-        elseif self.entity.x > self.player.x and self.entity.x - self.player.x < 5 * TILE_SIZE and self.player.direction == 'left' and tileLeft and tileLeft.color == 1 then
-            self.entity.direction = 'left'
-            self.entity:changeAnimation('walk-left')
-            print('chase player')
+        -- cat should chase the player if on top side
+        elseif self.entity.y > self.player.y and self.entity.y - self.player.y < 5 * TILE_SIZE and tileUp and tileUp.color == 1 and math.abs(self.entity.x - self.player.x) < TILE_SIZE  then
+            self.entity.direction = 'up'
+            self.entity:changeAnimation('walk-up')
+            print('chase player up')
+
+        
+             -- cat should chase the player if on left side
+            elseif self.entity.x > self.player.x and self.entity.x - self.player.x < 5 * TILE_SIZE and self.player.direction == 'left' and tileLeft and tileLeft.color == 1 then
+                self.entity.direction = 'left'
+                self.entity:changeAnimation('walk-left')
+                print('chase player')
 
 
         -- hit the bottom left corner
