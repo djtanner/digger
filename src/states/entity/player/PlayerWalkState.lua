@@ -1,11 +1,4 @@
---[[Some of this code was reused from:
 
-    GD50
-    Legend of Zelda
-
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-]]
 
 PlayerWalkState = Class{__includes = EntityWalkState}
 
@@ -13,13 +6,12 @@ function PlayerWalkState:init(player, level)
     self.entity = player
     self.level = level
     
-
-    -- render offset for spaced character sprite; negated in render function of state
   self.entity.offsetY = 16
   self.entity.offsetX = 16
 end
 
 function PlayerWalkState:update(dt)
+    --[[This code was reused from: Author: Colton Ogden cogden@cs50.harvard.edu]]
     if love.keyboard.isDown('left') then
         self.entity.direction = 'left'
         self.entity:changeAnimation('walk-left')
@@ -37,8 +29,6 @@ function PlayerWalkState:update(dt)
     end
 
 
-
-    -- perform base collision detection against walls
     EntityWalkState.update(self, dt)
 
     -- if walking on a grass tile, change it to dirt

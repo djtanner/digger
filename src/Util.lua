@@ -1,22 +1,11 @@
 --[[
     
-Code reused from:
-    GD50
-    
-
-    -- StartState Class --
-
+Code for generating quads reused from: GD50
     Author: Colton Ogden
-    cogden@cs50.harvard.edu
-
-   
+    cogden@cs50.harvard.edu  
 ]]
 
---[[
-    Given an "atlas" (a texture with multiple sprites), generate all of the
-    quads for the different tiles therein, divided into tables for each set
-    of tiles, since each color has 6 varieties.
-]]
+
 function GenerateQuads(atlas, tilewidth, tileheight)
     local sheetWidth = atlas:getWidth() / tilewidth
     local sheetHeight = atlas:getHeight() / tileheight

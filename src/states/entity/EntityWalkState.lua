@@ -1,7 +1,4 @@
---[[Some Code (mostly boundary checking) was reused from:
-    GD50
-    Legend of Zelda
-
+--[[Boundary checking code was reused from:GD50 Legend of Zelda
     Author: Colton Ogden
     cogden@cs50.harvard.edu
 ]]
