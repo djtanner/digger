@@ -23,5 +23,8 @@ The most complex logic for the game is in the Entity Walk State used for the cat
 A separate walk state was implemented for the slimes, as they are not limited to only dirt tiles and roam freely around the level, in order to 
 create additional challenge for the player. This code was reused from Zelda (Legend of 50) for how monsters roam in each room in the dungeon.
 
-
+**Game Over State**
+A table for keeping track of all the fruit Mochi consumes throughout the game is created and attached to the Player entity, so that it persists
+throughout the game. When Mochi collides with an enemy, the game is over and the user is taken to the Game Over screen, where the number of each
+fruit consumed during the game is displayed. This tracking of game statistics and way of displaying them to the user is distinct from other games implemented in GD50.
 
