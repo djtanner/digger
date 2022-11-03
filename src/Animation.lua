@@ -1,10 +1,6 @@
 --[[
     Reused code from : 
     GD50
-    Legend of Zelda
-
-    -- Animation Class --
-
     Author: Colton Ogden
     cogden@cs50.harvard.edu
 ]]

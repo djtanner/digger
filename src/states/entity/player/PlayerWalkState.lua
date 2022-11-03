@@ -1,5 +1,3 @@
-
-
 PlayerWalkState = Class{__includes = EntityWalkState}
 
 function PlayerWalkState:init(player, level)

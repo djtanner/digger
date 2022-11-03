@@ -1,8 +1,3 @@
---[[Boundary checking code was reused from:GD50 Legend of Zelda
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-]]
-
 EntityWalkState = Class{__includes = BaseState}
 
 function EntityWalkState:init(entity, level, player)
@@ -33,6 +28,10 @@ function EntityWalkState:update(dt)
     self.bumped = false
 
     -- boundary checking on all sides, allowing us to avoid collision detection on tiles
+    --[[Boundary checking code was reused from:GD50 Legend of Zelda
+    Author: Colton Ogden
+    cogden@cs50.harvard.edu
+]]
     if self.entity.direction == 'left' then
         self.entity.x = self.entity.x - self.entity.walkSpeed * dt
         

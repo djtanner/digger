@@ -55,9 +55,7 @@ function Entity:createAnimations(animations)
     return animationsReturned
 end
 
---[[
-    AABB with some slight shrinkage of the box on the top side for perspective.
-]]
+
 function Entity:collides(target)
    
 

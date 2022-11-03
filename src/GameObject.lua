@@ -1,5 +1,3 @@
-
-
 GameObject = Class{}
 
 function GameObject:init(def, x, y)
