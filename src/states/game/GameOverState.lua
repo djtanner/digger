@@ -1,5 +1,9 @@
 GameOverState = Class{__includes = BaseState}
 
+function GameOverState:enter(params)
+    self.player = params.player
+end
+
 function GameOverState:update(dt)
     if love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
         gStateMachine:change('start')
@@ -13,18 +17,21 @@ function GameOverState:update(dt)
 end
 
 function GameOverState:render()
-    love.graphics.draw(gTextures['background'], 0, 0, 0, 
+   love.graphics.draw(gTextures['background'], 0, 0, 0, 
     VIRTUAL_WIDTH / gTextures['background']:getWidth(),
     VIRTUAL_HEIGHT / gTextures['background']:getHeight())
-
-    
+   
 
     love.graphics.setFont(gFonts['title'])
     love.graphics.setColor(172/255, 112/255, 136/255, 1)
-    love.graphics.printf('GAME OVER', 0, VIRTUAL_HEIGHT / 2 - 32, VIRTUAL_WIDTH, 'center')
+    love.graphics.printf('GAME OVER', 0, 32, VIRTUAL_WIDTH, 'center')
 
-    
     love.graphics.setColor(0, 0, 0, 1)
+    love.graphics.setFont(gFonts['medium'])
+    local apple = tostring(gStateMachine.current.player.stats["apple"])
+    love.graphics.printf(apple, 120, 80, VIRTUAL_WIDTH)
+
+
     love.graphics.setFont(gFonts['small'])
     love.graphics.printf('Press Enter to Play Again', 0, VIRTUAL_HEIGHT / 2 + 64, VIRTUAL_WIDTH, 'center')
 end
