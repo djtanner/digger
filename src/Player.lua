@@ -13,6 +13,9 @@ function Player:init(def)
     Entity.init(self, def)
     self.score = 0
     self.levelNumber = 1
+    -- create a table of game stats
+    self.stats = {["apple"] = 0, ["banana"] = 0, ["cherry"] = 0, ["melon"] = 0, ["kiwi"] = 0, ["pineapple"] = 0, ["strawberry"] = 0}
+
 end
 
 function Player:update(dt)

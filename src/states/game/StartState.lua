@@ -6,7 +6,7 @@ function StartState:update(dt)
     end
 
     if love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
-        gStateMachine:change('play', {levelNumber = 1, score = 0})
+        gStateMachine:change('play', {levelNumber = 1, score = 0, stats = {["apple"] = 0, ["banana"] = 0, ["cherry"] = 0, ["melon"] = 0, ["kiwi"] = 0, ["pineapple"] = 0, ["strawberry"] = 0}})
     end
 end
 
