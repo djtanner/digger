@@ -18,7 +18,7 @@ each level, enemy entities are spawned in the PlayState function spawnEnemies, w
 
 **Entity Walk State**
 The most complex logic for the game is in the Entity Walk State used for the cat. The cat can only walk on dirt tiles, so this logic had to be defined and is used in the processAI function. This mechanism is also distinct from any of the other games implemented in GD50. Logic was written to handle when the cat is walking around the perimeter of the level and hits a corner, as well as adding some randomness to the direction of the cat during the gameplay, and lastly, adding functionality for the cat to "chase" Mochi when it is within 5 tiles, but still limited to only chasing on dirt tiles. The Player Walk State extends the Entity Walk State and was used for Mochi to dig new dirt tiles in every location that she walks,
-creating new dirt paths for the cat to walk on. An animation of Mochi using a digging tool is used for the walk state.
+creating new dirt paths for the cat to walk on. Making changes to the game tiles based on the actions of an entity is also a distinct game mechanic that was not used in any games in the course. An animation of Mochi using a digging tool is used for the walk state.
 
 **Slime Walk State**
 A separate walk state was implemented for the slimes, as they are not limited to only dirt tiles and roam freely around the level, in order to 
