@@ -1,11 +1,4 @@
---[[Code reused from:
 
-    GD50
-    Legend of Zelda
-
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-]]
 
 Player = Class{__includes = Entity}
 
@@ -22,6 +15,7 @@ function Player:update(dt)
     Entity.update(self, dt)
 end
 
+--[[Collision Code reused from:GD50 Legend of Zelda, Author: Colton Ogden, cogden@cs50.harvard.edu]]
 function Player:collides(target)
     local selfY, selfHeight = self.y + self.height / 2, self.height - self.height / 2
 

@@ -1,6 +1,6 @@
---[[Reused from 
+--[[Code reused from 
     GD50
-    Legend of Zelda
+    Legend of Zelda for Monsters
 
     Author: Colton Ogden
     cogden@cs50.harvard.edu
