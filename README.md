@@ -1,6 +1,6 @@
 # digger
 
-Mochi the Digger is a top-down game written in Lua and run on Love2D inspired by the DOS PC game Digger from 1983. The game was created by partially reusing features and functionality from GD50 games Zelda, Mario, and Dreadhalls, as well as implementing additional complexity in the gameplay mechanics and procedural level generation. To play the game, the player controls Mochi and must consume all of the fruits in each level while avoiding slimes and an evil cat that can only walk on dirt tiles and tries to chase Mochi. The following is a walkthrough of the implementation.
+Mochi the Digger is a top-down game written in Lua and run on Love2D inspired by the DOS PC game Digger from 1983. The game was created by partially reusing features and functionality from GD50 games Zelda, Mario, and Dreadhalls, as well as implementing additional complexity in the gameplay mechanics and procedural level generation. To play the game, the player controls Mochi and must consume all of the fruits in each level while avoiding slimes and an evil cat that can only walk on dirt tiles and tries to chase Mochi. The player can score indefinitely, as levels are procedurally generated. The following is a walkthrough of the implementation.
 
 **State Machine**
 The game utilizes 3 main states : start, play, and gameover. The Start state is a title screen from which the game is launched, Play State is
