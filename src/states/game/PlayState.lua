@@ -58,6 +58,8 @@ function PlayState:enter(params)
 
     self.player.levelNumber = params.levelNumber
 
+    self.player.stats = params.stats
+
     self:spawnEnemies(self.player.levelNumber)
 
 end
@@ -98,7 +100,7 @@ function PlayState:update(dt)
     --Go to next level when eat all the fruit
     if #self.level.objects == 0 then
 
-        gStateMachine:change('play', {levelNumber = self.player.levelNumber + 1, score = self.player.score})
+        gStateMachine:change('play', {levelNumber = self.player.levelNumber + 1, score = self.player.score, stats = self.player.stats})
     end
 
     
