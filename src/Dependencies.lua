@@ -36,7 +36,6 @@ require 'src/states/entity/player/PlayerWalkState'
 require 'src/states/entity/SlimeWalkState'
 
 
-
 gFonts = {
     ['small'] = love.graphics.newFont('fonts/font.ttf', 8),
     ['medium'] = love.graphics.newFont('fonts/font.ttf', 16),

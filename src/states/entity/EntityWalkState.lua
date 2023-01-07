@@ -72,11 +72,76 @@ end
 
 function EntityWalkState:processAI(params, dt)
     local level = params.level
+    local map = {}
+    local colorMap = level.tiles
+
+    -- map is 24 x 14
+    for i = 1, 14 do
+        table.insert(map, {})
+        for j = 1, 24 do
+            table.insert(map[i], colorMap[i][j].color)
+        end
+    end
+
+-- Value for walkable tiles - dirt tiles = 1
+local walkable = 1
+
+-- Library setup
+local Grid = require ("jumper.grid") -- The grid class
+local Pathfinder = require ("jumper.pathfinder") -- The pathfinder class
+
+-- Creates a grid object
+local grid = Grid(map) 
+-- Creates a pathfinder object using Jump Point Search
+local myFinder = Pathfinder(grid, 'ASTAR', walkable) 
+
+-- Define start and goal locations coordinates
+local startx, starty = 16,1  --math.floor(self.entity.x/16)+1, math.floor(self.entity.y/16)+1
+print(startx, starty)
+local endx, endy = 12,7 -- math.floor(self.player.x/24), math.floor(self.player.y/14)
+
+
+-- Calculates the path, and its length
+local path = myFinder:getPath(startx, starty, endx, endy)
+if path then
+  print(('Path found! Length: %.2f'):format(path:getLength()))
+	for node, count in path:nodes() do
+	  print(('Step: %d - x: %d - y: %d'):format(count, node:getX(), node:getY()))
+
+        nextX = node:getX()
+        nextY = node:getY()
+
+        self.entity.x = nextX * 16
+        self.entity.y = nextY * 16
+
+--[[ 
+      if node:getX() < math.floor(self.entity.x/24) then
+        self.entity.direction = 'left'
+        self.entity:changeAnimation('walk-left')
+      elseif node:getY() > math.floor(self.entity.y/24) then
+        self.entity.direction = 'down'
+        self.entity:changeAnimation('walk-down')
+      elseif node:getY() < math.floor(self.entity.y/24) then
+        self.entity.direction = 'up'
+        self.entity:changeAnimation('walk-up')
+      elseif node:getX() > math.floor(self.entity.x/24) then
+        self.entity.direction = 'right'
+        self.entity:changeAnimation('walk-right')
+      end ]]
+	end
+end
+
+
+
+
+
+
     local directions = {'left', 'right', 'up', 'down'}
 
     local tileLeft = level:pointToTile(self.entity.x, self.entity.y)
     local tileDown = level:pointToTile(self.entity.x + self.entity.width/2, self.entity.y + self.entity.height)
     local tileUp = level:pointToTile(self.entity.x + self.entity.width, self.entity.y - TILE_SIZE)
+    local tileRight = level:pointToTile(self.entity.x + self.entity.width, self.entity.y)
 
     
    -- print("x", math.floor(self.entity.x))
@@ -87,7 +152,7 @@ function EntityWalkState:processAI(params, dt)
 
 
         -- hit the  bottom right corner
-        if self.entity.x >= 345 and self.entity.y == 208 then
+--[[         if self.entity.x >= 345 and self.entity.y == 208 then
                 
                     self.entity.direction = 'left'
                     self.entity:changeAnimation('walk-left')
@@ -227,13 +292,13 @@ function EntityWalkState:processAI(params, dt)
             --print('move up when hit grass')
         
     
-    end
+    end ]]
    
 
     if self.moveDuration == 0 or self.bumped then
         
         -- set an initial move duration and direction
-        self.moveDuration = math.random(5)
+        self.moveDuration = math.random(2)
     
    
     elseif self.movementTimer > self.moveDuration then
@@ -256,7 +321,7 @@ function EntityWalkState:render()
         math.floor(self.entity.x - self.entity.offsetX), math.floor(self.entity.y - self.entity.offsetY))
     
     -- debug code
-    --[[ love.graphics.setColor(255, 0, 255, 255)
+    love.graphics.setColor(255, 0, 255, 255)
     love.graphics.rectangle('line', self.entity.x, self.entity.y, self.entity.width, self.entity.height)
-    love.graphics.setColor(255, 255, 255, 255)  ]]
+    love.graphics.setColor(255, 255, 255, 255)  
 end
