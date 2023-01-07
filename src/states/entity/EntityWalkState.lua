@@ -32,7 +32,8 @@ function EntityWalkState:update(dt)
     Author: Colton Ogden
     cogden@cs50.harvard.edu
 ]]
-     if self.entity.direction == 'left' then
+    if self.entity.type ~= 'monster' then 
+      if self.entity.direction == 'left'  then
         self.entity.x = self.entity.x - self.entity.walkSpeed * dt
         
         if self.entity.x <=  0  then 
@@ -64,7 +65,8 @@ function EntityWalkState:update(dt)
             self.bumped = true
         end
     end
- 
+
+end
 
 end
 
@@ -96,8 +98,8 @@ local grid = Grid(map)
 local myFinder = Pathfinder(grid, 'ASTAR', walkable) 
 
 -- Define start and goal locations coordinates
-local startx, starty = 24,1--math.floor(self.entity.x/16)+1, math.floor(self.entity.y/16)+1
-local endx, endy = 12,7 --math.floor(self.player.x/24), math.floor(self.player.y/14)
+local startx, starty =24,1 --math.floor(self.entity.x/16)+1, math.floor(self.entity.y/16)+1
+local endx, endy = math.floor(self.player.x/24), math.floor(self.player.y/14)
 
 
 -- Calculates the path, and its length
@@ -113,17 +115,37 @@ if path then
         
        local movetoX = nextX * 16 
        local movetoY = nextY * 16 
+       
+       --local diffX = self.entity.x - movetoX
+       --local diffY = self.entity.y + movetoY
 
-       local diffX = self.entity.x + movetoX
-       local diffY = self.entity.y + movetoY
-
-       self.entity.x = dt*diffX*self.entity.walkSpeed
-       self.entity.y = dt*diffY*self.entity.walkSpeed
         print(self.entity.x)
         print(self.entity.y)
+
         
+        if movetoX < self.entity.x then
+            --self.entity.direction = 'left' 
+            --self.entity:changeAnimation('walk-left')
+            self.entity.x = self.entity.x  - 16 + self.entity.walkSpeed * dt 
+        end   
+            
+        if movetoY > self.entity.y then
+            --self.entity.direction = 'down'
+            --self.entity:changeAnimation('walk-down')
+            self.entity.y = self.entity.y + 16 + self.entity.walkSpeed * dt  --(movetoY - self.entity.y)
+        end
 
+        if movetoX > self.entity.x then
+            --self.entity.direction = 'right' 
+            --self.entity:changeAnimation('walk-right')
+            self.entity.x = self.entity.x  + 16 + self.entity.walkSpeed * dt --(movetoX - self.entity.x)
+        end
+        if movetoY < self.entity.y then
+            --self.entity.direction = 'up'
+            --self.entity:changeAnimation('walk-up')
+           self.entity.y = self.entity.y - 16 + self.entity.walkSpeed * dt -- (self.entity.y - movetoY)
 
+        end
 
     --[[    if node:getX() < math.floor(self.entity.x/16) then
         self.entity.direction = 'left'

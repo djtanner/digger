@@ -5,7 +5,7 @@ function LevelMaker.generate(levelNumber)
     local tiles = {}
     local objects = {}
     
-    local tilesToRemove = 120;
+    local tilesToRemove = 160;
     mazeX = 4
     mazeY = 1
  
