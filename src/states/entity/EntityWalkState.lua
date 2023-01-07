@@ -32,7 +32,7 @@ function EntityWalkState:update(dt)
     Author: Colton Ogden
     cogden@cs50.harvard.edu
 ]]
-    if self.entity.direction == 'left' then
+     if self.entity.direction == 'left' then
         self.entity.x = self.entity.x - self.entity.walkSpeed * dt
         
         if self.entity.x <=  0  then 
@@ -64,7 +64,7 @@ function EntityWalkState:update(dt)
             self.bumped = true
         end
     end
-
+ 
 
 end
 
@@ -96,9 +96,8 @@ local grid = Grid(map)
 local myFinder = Pathfinder(grid, 'ASTAR', walkable) 
 
 -- Define start and goal locations coordinates
-local startx, starty = 16,1  --math.floor(self.entity.x/16)+1, math.floor(self.entity.y/16)+1
-print(startx, starty)
-local endx, endy = 12,7 -- math.floor(self.player.x/24), math.floor(self.player.y/14)
+local startx, starty = 24,1--math.floor(self.entity.x/16)+1, math.floor(self.entity.y/16)+1
+local endx, endy = 12,7 --math.floor(self.player.x/24), math.floor(self.player.y/14)
 
 
 -- Calculates the path, and its length
@@ -110,24 +109,35 @@ if path then
 
         nextX = node:getX()
         nextY = node:getY()
+        
+        
+       local movetoX = nextX * 16 
+       local movetoY = nextY * 16 
 
-        self.entity.x = nextX * 16
-        self.entity.y = nextY * 16
+       local diffX = self.entity.x + movetoX
+       local diffY = self.entity.y + movetoY
 
---[[ 
-      if node:getX() < math.floor(self.entity.x/24) then
+       self.entity.x = dt*diffX*self.entity.walkSpeed
+       self.entity.y = dt*diffY*self.entity.walkSpeed
+        print(self.entity.x)
+        print(self.entity.y)
+        
+
+
+
+    --[[    if node:getX() < math.floor(self.entity.x/16) then
         self.entity.direction = 'left'
         self.entity:changeAnimation('walk-left')
-      elseif node:getY() > math.floor(self.entity.y/24) then
+      elseif node:getY() > math.floor(self.entity.y/16) then
         self.entity.direction = 'down'
         self.entity:changeAnimation('walk-down')
-      elseif node:getY() < math.floor(self.entity.y/24) then
+      elseif node:getY() < math.floor(self.entity.y/16) then
         self.entity.direction = 'up'
         self.entity:changeAnimation('walk-up')
-      elseif node:getX() > math.floor(self.entity.x/24) then
+      elseif node:getX() > math.floor(self.entity.x/16) then
         self.entity.direction = 'right'
-        self.entity:changeAnimation('walk-right')
-      end ]]
+        self.entity:changeAnimation('walk-right') 
+      end  ]]
 	end
 end
 
@@ -151,8 +161,8 @@ end
 -- only allow walking on dirt tiles for cat
 
 
-        -- hit the  bottom right corner
---[[         if self.entity.x >= 345 and self.entity.y == 208 then
+      --[[   -- hit the  bottom right corner
+        if self.entity.x >= 345 and self.entity.y == 208 then
                 
                     self.entity.direction = 'left'
                     self.entity:changeAnimation('walk-left')
@@ -292,13 +302,13 @@ end
             --print('move up when hit grass')
         
     
-    end ]]
+    end  ]]
    
 
     if self.moveDuration == 0 or self.bumped then
         
         -- set an initial move duration and direction
-        self.moveDuration = math.random(2)
+        self.moveDuration = math.random(5)
     
    
     elseif self.movementTimer > self.moveDuration then
