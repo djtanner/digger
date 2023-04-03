@@ -151,8 +151,8 @@ function PlayState:spawnEnemies(levelNumber)
             type = "monster",
 
             -- always spawn in top corners
-            x = 368,
-            y = 0 ,
+            x = 1,
+            y = 1 ,
 
            
             width = ENTITY_DEFS['pink-kitty'].width,
